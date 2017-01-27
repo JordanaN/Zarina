@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Packaging;
+use App\Entities\Packaging;
 
 class PackagingsTableSeeder extends Seeder
 {

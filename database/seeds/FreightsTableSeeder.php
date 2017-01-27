@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Freight;
+use App\Entities\Freight;
 
 class FreightsTableSeeder extends Seeder
 {

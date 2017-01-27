@@ -1,6 +1,6 @@
 <?php 
 
-$factory->define(App\Packaging::class, function (Faker\Generator $faker) {
+$factory->define(App\Entities\Packaging::class, function (Faker\Generator $faker) {
 
     return [
         'provider' => $faker->text($maxNbChars = 200),

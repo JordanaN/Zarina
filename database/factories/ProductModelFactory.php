@@ -1,7 +1,7 @@
 <?php 
 
 
-$factory->define(App\Product::class, function(Faker\Generator $faker) {
+$factory->define(App\Entities\Product::class, function(Faker\Generator $faker) {
 	return [
 		'description' => $faker->text($maxNbChars = 200),
 		'amount' => $faker->randomDigit,
