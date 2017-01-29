@@ -5,42 +5,111 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Services\ProductService;
 
+
 class ProductsController extends Controller
 {
-	/**
-	 * @var App\Services\productService
-	 */
-	protected $productService;
 
-	public function __construct(ProductService $productService)
-	{
-		$this->productService = $productService;
-	}
-    
-	public function index()
-	{
-		$products = $this->productService->findAllProducts();
-		return view('products.index')->with('products', $products);
+    /**
+     * @var App\Services\productService
+     */
+    protected $productService;
 
-	}
+    public function __construct(ProductService $productService)
+    {
+        $this->productService = $productService;
+    }
 
-	public function get($id)
-	{
 
-	}
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $products = $this->productService->findAllProducts();
+        return view('products.index')->with('products', $products);
+    }
 
-	public function create()
-	{
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('products.add');
+    }
 
-	}
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store()
+    {
+        $data = \Request::except('_token');       
 
-	public function update($id)
-	{
+        $response = $this->productService->newProduct($data);
 
-	}
+        if (!$response) {
+            return [
+                $success = false;
+                $message = 'Não foi possivel salvar o produto!';
+            ];
+        }
 
-	public function delete($id)
-	{
+        dd($response);
+        return [
+            $success = true;
+            $message = 'Salvo com sucesso!';
+        ]
 
-	}
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
 }

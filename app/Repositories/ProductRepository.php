@@ -27,5 +27,10 @@ class ProductRepository extends BaseRepository
 
 	}
 
+	public function saveNewProduct($data) 
+	{
+		return $this->product->create($data);
+	}
+
 
 }

@@ -23,5 +23,15 @@ class ProductService
 		return $this->repository->all();
 	}
 
+	public function newProduct($data)
+	{
+		if (!$data) {
+			return null;
+		}
+
+		return $this->repository->saveNewProduct($data);
+
+	}
+
 	
 }
