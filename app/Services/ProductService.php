@@ -30,7 +30,27 @@ class ProductService
 		}
 
 		return $this->repository->saveNewProduct($data);
+	}
 
+	/**
+	 * @param integer $id
+	 * @return model $product
+	 */
+	public function findById($id)
+	{
+		if (!$id) {
+			return null;
+		}
+
+		$response = $this->repository->findProductById($id);
+
+		return $response;
+	}
+
+
+	public function updateProduct($data, $id)
+	{
+		// dd('aa');
 	}
 
 	

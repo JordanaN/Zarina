@@ -93,6 +93,7 @@ abstract class BaseRepository implements RepositoryInterface {
         return $this->model->find($id, $columns);
     }
 
+    
     /**
      * @param $attribute
      * @param $value

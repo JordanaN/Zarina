@@ -54,17 +54,10 @@ class ProductsController extends Controller
         $response = $this->productService->newProduct($data);
 
         if (!$response) {
-            return [
-                $success = false;
-                $message = 'Não foi possivel salvar o produto!';
-            ];
+            return redirect()->route('produtos.index')->with('message', 'Erro! Preencha todos os campos corretamente.');
         }
 
-        dd($response);
-        return [
-            $success = true;
-            $message = 'Salvo com sucesso!';
-        ]
+        return redirect()->route('produtos.index')->with('message', 'Produto criado com sucesso!');
 
     }
 
@@ -87,7 +80,14 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = $this->productService->findById($id);
+
+        if (!$product) {
+            return redirect()->route('produtos.index')->with('message', 'Erro! Produto não encontrado.');
+        }
+
+        return view('products.edit')
+                ->with('product', $product);
     }
 
     /**
@@ -97,9 +97,12 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
-        //
+        $data = \Request::except('_token');  
+        $response = $this->productService->updateProduct($data, $id);     
+
+        // dd($data, $id);
     }
 
     /**
