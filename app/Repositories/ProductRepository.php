@@ -52,5 +52,15 @@ class ProductRepository extends BaseRepository
 		return $this->product->find($id);		
 	}
 
+	/**
+	 * método deleta produto do banco
+	 * @param integer $id
+	 * @return boolean
+	 */
+	public function deleteProductById($id)
+	{
+		return $this->product->delete($id);
+	}
+
 
 }

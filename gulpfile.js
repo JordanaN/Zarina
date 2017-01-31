@@ -21,9 +21,20 @@ elixir(mix => {
 elixir(function(mix) {
     mix.styles([
         "sb-admin.css",
-        "font-awesome.min.css"
-    ], 'public/css/all.css');
+        "font-awesome.min.css",
+        "normalize.css"
+    ]);
 });
+
+// Fonts
+gulp.task('fonts', function() {
+    return gulp.src([
+                    'app/node_modules/bootstrap-sass/assets/fonts/bootstrap/glyphicons-halflings-regular.*',
+                    'app/public/font-awesome/fonts/fontawesome-webfont.*',
+                    ])
+            .pipe(gulp.dest('dist/fonts/'));
+});
+
 
 elixir(function(mix) {
     mix.scripts([

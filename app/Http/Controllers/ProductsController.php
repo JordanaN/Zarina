@@ -54,10 +54,10 @@ class ProductsController extends Controller
         $response = $this->productService->newProduct($data);
 
         if (!$response) {
-            return redirect()->route('produtos.index')->with('message', 'Erro! Preencha todos os campos corretamente.');
+            return redirect()->route('produtos.index')->with('error', 'Erro! Preencha todos os campos corretamente.');
         }
 
-        return redirect()->route('produtos.index')->with('message', 'Produto criado com sucesso!');
+        return redirect()->route('produtos.index')->with('success', 'Produto criado com sucesso!');
 
     }
 
@@ -83,7 +83,7 @@ class ProductsController extends Controller
         $product = $this->productService->findById($id);
 
         if (!$product) {
-            return redirect()->route('produtos.index')->with('message', 'Erro! Produto não encontrado.');
+            return redirect()->route('produtos.index')->with('error', 'Erro! Produto não encontrado.');
         }
 
         return view('products.edit')
@@ -99,10 +99,14 @@ class ProductsController extends Controller
      */
     public function update($id)
     {
-        $data = \Request::except('_token');  
+        $data = \Request::all();  
         $response = $this->productService->updateProduct($data, $id);     
 
-        // dd($data, $id);
+        if(!$response) {
+            return redirect()->route('produtos.index')->with('error', 'Erro! Produto não atualizado');
+        }
+
+        return redirect()->route('produtos.index')->with('success', 'Produto atualizado com sucesso.');
     }
 
     /**
@@ -113,6 +117,12 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $response = $this->productService->deleteById($id);
+
+        if(!$response) {
+            return redirect()->route('produtos.index')->with('error', 'Erro ao deletar o produto');
+        }
+
+        return redirect()->route('produtos.index')->with('success', 'Produto deletado com sucesso.');
     }
 }

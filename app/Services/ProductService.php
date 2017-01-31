@@ -4,9 +4,19 @@ namespace App\Services;
 
 use App\Entities\Product;
 use App\Repositories\ProductRepository;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 
 class ProductService 
 {
+	use ValidatesRequests;
+
+
+	protected $validatorRulesProducts = [
+		'amount' => 'required', 
+		'cost_price' => 'required', 
+		'code' => 'required | unique:product | max:8'
+	];
+
 	/**
 	 * @var App\Repositories\ProductRepository
 	 */
@@ -29,6 +39,12 @@ class ProductService
 			return null;
 		}
 
+		// $validator = $this->validate($data, $this->validatorRulesProducts);
+
+		// if ($validator->fails()) {
+		// 	return null;
+		//}
+
 		return $this->repository->saveNewProduct($data);
 	}
 
@@ -47,11 +63,55 @@ class ProductService
 		return $response;
 	}
 
-
+	/**
+	 * Produto realiza a atualização dos dados do produto
+	 * @var array $data
+	 * @var integer $id
+	 * @return boolean
+	 */
 	public function updateProduct($data, $id)
 	{
-		// dd('aa');
+		if (!$id) {
+			return null;
+		}
+
+		$product = $this->findById($id);
+
+		// $validator = $this->validate($data, $this->validatorRulesProducts);		
+
+		// if ($validator->fails()) {
+		// 	return null;
+		// }
+
+		$product->description = $data['description'];
+		$product->amount = $data['amount'];
+		$product->cost_price = $data['cost_price'];
+		$product->code = $data['code'];
+
+
+		if ($product->save()) {
+			return true;
+		}
+
+		return false;
+
+	}
+
+	/**
+	 * Método deleta produto pelo ID
+	 * @var integer $id
+	 * @return boolean
+	 */
+	public function deleteById($id)
+	{
+		if (!$id) {
+			return null;
+		}
+
+		return $this->repository->deleteProductById($id);
 	}
 
 	
 }
+
+

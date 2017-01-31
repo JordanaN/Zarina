@@ -10,13 +10,8 @@
 
     <!-- CSS -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/all.css') }}" rel="stylesheet"> 
+    <link href="{{ asset('css/all.css') }}" rel="stylesheet">     
 
-    <!-- JQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-    <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -54,7 +49,7 @@
                         <a href="index.html"> Dashboard</a>
                     </li>
                     <li>
-                        <a href="charts.html"> Produtos</a>
+                        <a href="{{route('produtos.index')}}"> Produtos</a>
                     </li>
                     <li>
                         <a href="tables.html"> Embalagens</a>
@@ -94,9 +89,8 @@
     <!-- /#wrapper -->
 
     <!-- JavaScript -->
-    <script src="{{asset('js/all.js')}}"></script>
-    <script src="{{asset('js/app.js')}}"></script>
+    <script src='http://code.jquery.com/jquery-2.1.3.min.js'></script>
+    <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'></script>
 
 </body>
-
 </html>

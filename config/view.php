@@ -15,6 +15,7 @@ return [
 
     'paths' => [
         realpath(base_path('resources/views')),
+        __DIR__.'/../views',
     ],
 
     /*
