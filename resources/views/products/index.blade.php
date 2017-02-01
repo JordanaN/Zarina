@@ -41,11 +41,10 @@
 	 			<td class="visible-md visible-lg">{{ $product->cost_price }}</td>
 	 			<td>
 	 				<a class="btn btn-default space-buttom" href="{{route('produtos.edit', $product->id)}}">Editar</a>
-
-					<form action="{{ route('produtos.destroy', $product->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Deseja deletar o produto?')) { return true } else {return false };">
+					<form action="{{ route('produtos.destroy', $product->id) }}" method="POST">
 		             <input type="hidden" name="_method" value="DELETE">
 		             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-		             <button type="submit" class="btn btn-danger"><i class=""></i> Deletar</button>
+		             <button type="submit" class="btn btn-danger"></i> Deletar</button>
 		          </form>	 			    
 	 			</td>
 	 		</tr>	 			

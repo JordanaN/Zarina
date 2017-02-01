@@ -14,7 +14,7 @@ class ProductService
 	protected $validatorRulesProducts = [
 		'amount' => 'required', 
 		'cost_price' => 'required', 
-		'code' => 'required | unique:product | max:8'
+		'code' => 'required'
 	];
 
 	/**
@@ -41,9 +41,9 @@ class ProductService
 
 		// $validator = $this->validate($data, $this->validatorRulesProducts);
 
-		// if ($validator->fails()) {
+		// if ($validator) {
 		// 	return null;
-		//}
+		// }
 
 		return $this->repository->saveNewProduct($data);
 	}
@@ -97,21 +97,7 @@ class ProductService
 
 	}
 
-	/**
-	 * Método deleta produto pelo ID
-	 * @var integer $id
-	 * @return boolean
-	 */
-	public function deleteById($id)
-	{
-		if (!$id) {
-			return null;
-		}
-
-		return $this->repository->deleteProductById($id);
-	}
-
-	
+		
 }
 
 

@@ -38,7 +38,11 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        return view('products.add');
+        $packagingList = ['teste', 'teste2'];
+        $freightList = ['teste3', 'teste4'];
+        return view('products.add')
+        ->with('packagingList', $packagingList)
+        ->with('freightList', $freightList);
     }
 
     /**
@@ -47,9 +51,9 @@ class ProductsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
-        $data = \Request::except('_token');       
+        $data = $request->only('description', 'amount', 'cost_price', 'code');       
 
         $response = $this->productService->newProduct($data);
 
@@ -117,9 +121,9 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        $response = $this->productService->deleteById($id);
+        $product = $this->productService->findById($id);
 
-        if(!$response) {
+        if(!$product->delete()) {
             return redirect()->route('produtos.index')->with('error', 'Erro ao deletar o produto');
         }
 
