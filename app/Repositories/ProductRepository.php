@@ -27,9 +27,9 @@ class ProductRepository extends BaseRepository
     /**
      * metóodo retorna todos os produtos
      */
-	public function all()
+	public function allProducts()
 	{
-		return $this->product->all();
+		return $this->product->paginate();
 	}
 
 	/**

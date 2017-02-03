@@ -30,7 +30,7 @@ class ProductService
 
 	public function findAllProducts()
 	{
-		return $this->repository->all();
+		return $this->repository->allProducts();
 	}
 
 	public function newProduct($data)

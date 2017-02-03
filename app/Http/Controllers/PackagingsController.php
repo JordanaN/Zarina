@@ -3,9 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Services\PackagingService;
 
 class PackagingsController extends Controller
 {
+
+    /**
+     * @var App\Services\PackagingService
+     */
+    protected $packagingService;
+
+    public function __construct(PackagingService $packagingService)
+    {
+        $this->packagingService = $packagingService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +24,9 @@ class PackagingsController extends Controller
      */
     public function index()
     {
-        //
+        $packagings = $this->packagingService->findAllPackagings();
+        return view('packagings.index')
+        ->with('packagings', $packagings);
     }
 
     /**
@@ -23,7 +36,8 @@ class PackagingsController extends Controller
      */
     public function create()
     {
-        //
+        $providerList = ['teste', 'teste'];
+        return view('packagings.add')->with('providerList', $providerList);
     }
 
     /**
@@ -34,7 +48,9 @@ class PackagingsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $response = $request->all();
+
+        
     }
 
     /**

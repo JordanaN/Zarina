@@ -49,10 +49,10 @@
                         <a href="index.html"> Dashboard</a>
                     </li>
                     <li>
-                        <a href="{{route('produtos.index')}}"> Produtos</a>
+                        <a href="{{route('produtos.index')}}"> {{trans('layout_admin.navbar.products')}}</a>
                     </li>
                     <li>
-                        <a href="tables.html"> Embalagens</a>
+                        <a href="{{route('embalagens.index')}}"> {{trans('layout_admin.navbar.packagings')}}</a>
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"> Fretes </a>
