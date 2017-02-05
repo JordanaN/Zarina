@@ -34,4 +34,16 @@ class PackagingService
 
 		return $response;
 	}
+
+
+	public function createNewPackaging($data)
+	{
+		if(empty($data)) {
+			return null;
+		}
+
+		return $this->repository->createPackaging($data);
+	}
+
 }
+

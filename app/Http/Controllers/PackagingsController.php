@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\PackagingService;
+use Illuminate\Support\MessageBag;
+
 
 class PackagingsController extends Controller
-{
-
+{    
+    
     /**
      * @var App\Services\PackagingService
      */
@@ -48,8 +50,11 @@ class PackagingsController extends Controller
      */
     public function store(Request $request)
     {
-        $response = $request->all();
+        $data = $request->except('_token');
 
+        $response = $this->packagingService->createNewPackaging($data);
+
+        dd($response);
         
     }
 
