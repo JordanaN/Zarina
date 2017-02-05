@@ -26,4 +26,11 @@ Route::group(['prefix' => 'admin'], function() {
 	//frete
 	Route::resource('frete', 'FreightsController');	
 
+	//fornecedores de embalagens
+	Route::resource('fornecedor', 'ProviderController');
+
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
