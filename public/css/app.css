@@ -1,5 +1,6 @@
 @charset "UTF-8";
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
@@ -7710,6 +7711,14 @@ button.close {
 
 .top-nav > li > a:hover, .top-nav > li > a:focus, .top-nav > .open > a, .top-nav > .open > a:hover, .top-nav > .open > a:focus {
   background-color: #4a9e94 !important;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #fff;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+  color: #fff;
 }
 
 /*# sourceMappingURL=app.css.map */
