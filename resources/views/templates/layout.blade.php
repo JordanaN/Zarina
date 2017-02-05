@@ -50,24 +50,34 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="index.html"> Dashboard</a>
+                      <a href="index.html">
+                        <i class="fa fa-tachometer" aria-hidden="true"></i>
+                          Dashboard
+                      </a>
                     </li>
                     <li>
-                        <a href="{{route('produtos.index')}}"> {{trans('layout_admin.navbar.products')}}</a>
+                      <a href="{{route('produtos.index')}}">
+                          <i class="fa fa-product-hunt" aria-hidden="true"></i>
+                          {{trans('layout_admin.navbar.products')}}
+                      </a>
                     </li>
                     <li>
-                        <a href="{{route('embalagens.index')}}"> {{trans('layout_admin.navbar.packagings')}}</a>
+                        <a href="{{route('embalagens.index')}}">
+                          <i class="fa fa-dropbox" aria-hidden="true"></i>
+                          {{trans('layout_admin.navbar.packagings')}}
+                        </a>
                     </li>
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"> Fretes </a>
-                        <ul id="demo" class="collapse">
-                            <li>
-                                <a href="#"> Opções </a>
-                            </li>
-                        </ul>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo">
+                          <i class="fa fa-rocket" aria-hidden="true"></i>
+                           Fretes
+                        </a>
                     </li>
                     <li>
-                        <a href="forms.html"> Vendas </a>
+                        <a href="forms.html">
+                          <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                          Vendas
+                        </a>
                     </li>
 
                 </ul>

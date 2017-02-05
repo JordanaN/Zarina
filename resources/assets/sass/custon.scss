@@ -8,11 +8,11 @@
   }
 
   .navbar-header {
-      width: 226px;
+    width: 226px;
   }
 
   .navbar {
-      min-height: 52px;
+    min-height: 52px;
   }
 
   .top-nav>li>a {
@@ -30,5 +30,9 @@
 }
 
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus{
-  color: $navbar-link;
+    color: $navbar-link;
+}
+
+i{
+    padding-right: 30px;
 }
