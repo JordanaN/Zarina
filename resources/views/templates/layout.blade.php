@@ -10,7 +10,7 @@
 
     <!-- CSS -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/all.css') }}" rel="stylesheet">     
+    <link href="{{ asset('css/all.css') }}" rel="stylesheet">
 
 </head>
 
@@ -19,7 +19,7 @@
     <div id="wrapper">
 
         <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" data-nav="blue">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -28,13 +28,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{route('produtos.index')}}">Zarina Stock</a>
+                <a class="navbar-brand" href="{{route('produtos.index')}}">
+                  <img src="{{asset('image/Zarina.png')}}" class="logo">
+                </a>
             </div>
             <!-- Top Menu Items -->
-            <ul class="nav navbar-right top-nav"> 
+            <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">John Smith <b class="caret"></b></a>
-                    <ul class="dropdown-menu">                       
+                    <ul class="dropdown-menu">
                         <li>
                             <a href="#"> Log Out</a>
                         </li>
@@ -59,13 +61,13 @@
                         <ul id="demo" class="collapse">
                             <li>
                                 <a href="#"> Opções </a>
-                            </li>                            
+                            </li>
                         </ul>
                     </li>
                     <li>
                         <a href="forms.html"> Vendas </a>
-                    </li>            
-                    
+                    </li>
+
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -74,16 +76,16 @@
         <div id="page-wrapper">
 
             <div class="container-fluid">
-                
+
                 <div class="container col-md-12">
                     @yield('content')
-                </div>              
+                </div>
 
             </div>
             <!-- /.container-fluid -->
 
         </div>
-        <!-- /#page-wrapper --> 
+        <!-- /#page-wrapper -->
 
     </div>
     <!-- /#wrapper -->

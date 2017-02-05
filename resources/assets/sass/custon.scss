@@ -1,0 +1,24 @@
+
+  [data-nav="blue"]{
+    background-color: $navbar-blue-bg;
+  }
+
+  .navbar-brand img{
+    width: 66%;
+  }
+
+  .navbar-header {
+      width: 226px;
+  }
+
+  .navbar {
+      min-height: 52px;
+  }
+
+  .top-nav>li>a {
+    color: $navbar-link !important;
+}
+
+.top-nav>li>a:hover, .top-nav>li>a:focus, .top-nav>.open>a, .top-nav>.open>a:hover, .top-nav>.open>a:focus {
+    background-color: $navbar-hover !important;
+}
