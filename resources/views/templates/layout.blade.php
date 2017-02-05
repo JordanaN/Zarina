@@ -34,14 +34,16 @@
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
+                @if (Auth::user())
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">John Smith <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}<b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="#"> Log Out</a>
                         </li>
                     </ul>
                 </li>
+                @endif
             </ul>
 
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
