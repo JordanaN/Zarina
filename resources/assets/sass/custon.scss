@@ -1,4 +1,9 @@
 // Navbar
+
+  body{
+    background-color: #fff !important;
+  }
+
   [data-nav="blue"]{
     background-color: $navbar-blue-bg;
   }
@@ -39,6 +44,10 @@ i{
 
 // Products
 
+#wrapper{
+  position: absolute;
+  width: 100%;
+}
 .table-responsive {
     overflow-x: visible;
 }
@@ -63,4 +72,26 @@ i{
 
 .space-buttom {
   color: $navbar-blue-bg !important;
+}
+
+[data-app="qty"] > i{
+  padding-right: 0px;
+  font-size: large;
+}
+
+[data-action="minus"]{
+  color: $navbar-blue-bg;
+}
+
+[data-action="plus"]{
+  color: $navbar-blue-bg;
+}
+
+[name="amount"]{
+  width: 20%;
+  display: initial;
+}
+
+.input-group-addon{
+  background-color: $navbar-blue-bg;
 }

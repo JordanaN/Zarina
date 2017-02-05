@@ -105,6 +105,17 @@
     <!-- JavaScript -->
     <script src='http://code.jquery.com/jquery-2.1.3.min.js'></script>
     <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'></script>
+    <script type="text/javascript">
+    jQuery('[data-app="qty"]').on('click', function() {
+    	var $input = jQuery(this).parent().find('input')[0];
+    	var value = parseInt(jQuery($input).attr('value'));
+    	var option = jQuery(this).attr('data-action')== 'minus' ? -1 : 1
+
+    	value += option;
+    	if(value > 0)
+    		jQuery($input).attr('value',value);
+    })
+    </script>
 
 </body>
 </html>

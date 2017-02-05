@@ -7689,6 +7689,10 @@ button.close {
   }
 }
 
+body {
+  background-color: #fff !important;
+}
+
 [data-nav="blue"] {
   background-color: #6ebab1;
 }
@@ -7725,6 +7729,11 @@ i {
   padding-right: 30px;
 }
 
+#wrapper {
+  position: absolute;
+  width: 100%;
+}
+
 .table-responsive {
   overflow-x: visible;
 }
@@ -7750,6 +7759,28 @@ i {
 
 .space-buttom {
   color: #6ebab1 !important;
+}
+
+[data-app="qty"] > i {
+  padding-right: 0px;
+  font-size: large;
+}
+
+[data-action="minus"] {
+  color: #6ebab1;
+}
+
+[data-action="plus"] {
+  color: #6ebab1;
+}
+
+[name="amount"] {
+  width: 20%;
+  display: initial;
+}
+
+.input-group-addon {
+  background-color: #6ebab1;
 }
 
 /*# sourceMappingURL=app.css.map */

@@ -2,14 +2,23 @@
 
 
 @section('content')
-	
+
+<div class="header">
+	<h1>
+		<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+		Adicionar Produto
+	</h1>
+</div>
+<hr>
+
+
 <form action="{{ route('produtos.store') }}" method="POST">
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
+	<div class="form-group col-md-8">
+		<label>Nome</label>
+		<input type="text" name='name' value="" class="form-control" placeholder="Nome do Produto">
+	</div>
 
-	<div class="form-group col-md-12">
-		<label>{{trans('product.forms.description')}}</label>
-		<textarea name="description" class="form-control" rows="3" required></textarea>
-    </div>
     <div class="form-group col-md-5">
 		<label>{{trans('product.forms.amount')}}</label>
 		<input type="text" name='amount' class="form-control" required>
@@ -23,25 +32,27 @@
 	    </div>
   	</div>
   	<div class="form-group col-md-5">
-	    <label>{{trans('product.forms.packaging')}}</label>      
-  		{{ Form::select('packaging', $packagingList, null, array('class' => 'form-control')) }}	    
+	    <label>{{trans('product.forms.packaging')}}</label>
+  		{{ Form::select('packaging', $packagingList, null, array('class' => 'form-control')) }}
 	</div>
 	<div class="form-group col-md-5">
-	    <label>{{trans('product.forms.freight')}}</label>      
-	      {{ Form::select('packaging', $freightList, null, array('class' => 'form-control')) }}	 
+	    <label>{{trans('product.forms.freight')}}</label>
+	      {{ Form::select('packaging', $freightList, null, array('class' => 'form-control')) }}
 	  	</div>
   	<div class="form-group col-md-8">
 		<label>{{trans('product.forms.code')}}</label>
+		<div class="form-group col-md-12">
+			<label>{{trans('product.forms.description')}}</label>
+			<textarea name="description" class="form-control" rows="3" required></textarea>
+			</div>
 		<input type="text" name="code" class="form-control" required>
     </div>
-    <div class="col-md-12">    	
+    <div class="col-md-12">
     	<button type="submit" class="btn btn-primary">Cadastrar</button>
     	<a href="{{route('produtos.index')}}" class="btn btn-default">Cancelar</a>
-    	
+
     </div>
-	
+
 
 </form>
 @endsection
-
-
