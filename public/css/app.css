@@ -7725,4 +7725,31 @@ i {
   padding-right: 30px;
 }
 
+.table-responsive {
+  overflow-x: visible;
+}
+
+.header > h1 > i {
+  color: #6ebab1;
+}
+
+.delete {
+  border: 0;
+  background: transparent;
+  color: red;
+}
+
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {
+  background-color: #6ebab1;
+  border-color: #6ebab1;
+}
+
+.action {
+  font-size: large;
+}
+
+.space-buttom {
+  color: #6ebab1 !important;
+}
+
 /*# sourceMappingURL=app.css.map */

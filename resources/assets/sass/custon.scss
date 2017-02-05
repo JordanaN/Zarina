@@ -36,3 +36,31 @@
 i{
     padding-right: 30px;
 }
+
+// Products
+
+.table-responsive {
+    overflow-x: visible;
+}
+
+.header > h1 > i {
+  color: $navbar-blue-bg;
+}
+
+.delete{
+  border: 0;
+  background: transparent;
+  color: red;
+}
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {
+    background-color: $navbar-blue-bg;
+    border-color: $navbar-blue-bg;
+}
+
+.action{
+  font-size: large;
+}
+
+.space-buttom {
+  color: $navbar-blue-bg !important;
+}
