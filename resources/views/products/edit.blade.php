@@ -18,7 +18,7 @@
 		<input type="text" name='name' value="" class="form-control" placeholder="Nome do Produto">
 	</div>
   <div class="form-group col-md-4">
-		<label>Quantidade</label>
+		<label>{{trans('product.forms.amount')}}</label>
 		<div>
 			<span type="button" data-action="minus" data-app="qty"><i class="fa fa-minus-circle" aria-hidden="true"></i></span>
 			<input type="text" name='amount' value="{{$product->amount}}" size="3" class="form-control">

@@ -5,7 +5,7 @@
 
 <div class="header">
 	<h1>
-		<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+		<i class="fa fa-plus" aria-hidden="true"></i>
 		Adicionar Produto
 	</h1>
 </div>
@@ -18,41 +18,42 @@
 		<label>Nome</label>
 		<input type="text" name='name' value="" class="form-control" placeholder="Nome do Produto">
 	</div>
-
-    <div class="form-group col-md-5">
+	<div class="form-group col-md-4">
 		<label>{{trans('product.forms.amount')}}</label>
-		<input type="text" name='amount' class="form-control" required>
+		<div>
+			<span type="button" data-action="minus" data-app="qty"><i class="fa fa-minus-circle" aria-hidden="true"></i></span>
+			<input type="text" name='amount' class="form-control" required>
+			<span type="button" data-action="plus" data-app="qty"><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
+		</div>
+	</div>
+
+  <div class="form-group col-md-4">
+  	<label>{{trans('product.forms.cost_price')}}</label>
+    <div class="input-group">
+    	<div class="input-group-addon">$</div>
+    	<input type="text" name="cost_price" class="form-control" required>
     </div>
-    <div class="form-group col-md-5">
-    	<label>{{trans('product.forms.cost_price')}}</label>
-	    <div class="input-group">
-	    	<div class="input-group-addon">$</div>
-	    	<input type="text" name="cost_price" class="form-control" required>
-	    	<div class="input-group-addon">.00</div>
-	    </div>
-  	</div>
-  	<div class="form-group col-md-5">
+	</div>
+  <div class="form-group col-md-4">
 	    <label>{{trans('product.forms.packaging')}}</label>
   		{{ Form::select('packaging', $packagingList, null, array('class' => 'form-control')) }}
 	</div>
-	<div class="form-group col-md-5">
+	<div class="form-group col-md-4">
 	    <label>{{trans('product.forms.freight')}}</label>
 	      {{ Form::select('packaging', $freightList, null, array('class' => 'form-control')) }}
-	  	</div>
-  	<div class="form-group col-md-8">
+	</div>
+  <div class="form-group col-md-8">
 		<label>{{trans('product.forms.code')}}</label>
-		<div class="form-group col-md-12">
-			<label>{{trans('product.forms.description')}}</label>
-			<textarea name="description" class="form-control" rows="3" required></textarea>
-			</div>
 		<input type="text" name="code" class="form-control" required>
-    </div>
-    <div class="col-md-12">
-    	<button type="submit" class="btn btn-primary">Cadastrar</button>
-    	<a href="{{route('produtos.index')}}" class="btn btn-default">Cancelar</a>
+	</div>
+	<div class="form-group col-md-12">
+		<label>{{trans('product.forms.description')}}</label>
+		<textarea name="description" class="form-control" rows="5" required></textarea>
+	</div>
 
-    </div>
-
-
+  <div class="col-md-12">
+  	<button type="submit" class="btn btn-primary">Cadastrar</button>
+  	<a href="{{route('produtos.index')}}" class="btn btn-danger">Cancelar</a>
+  </div>
 </form>
 @endsection
