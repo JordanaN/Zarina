@@ -38,7 +38,7 @@ gulp.task('fonts', function() {
 
 elixir(function(mix) {
     mix.scripts([
-        'bootstrap.js',
+        'app.js',
         'jquery.min.js'
     ]);
 });
