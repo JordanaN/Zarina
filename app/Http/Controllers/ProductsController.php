@@ -89,9 +89,13 @@ class ProductsController extends Controller
         if (!$product) {
             return redirect()->route('produtos.index')->with('error', 'Erro! Produto não encontrado.');
         }
+        $packagingList = ['teste', 'teste2'];
+        $freightList = ['teste3', 'teste4'];
 
         return view('products.edit')
-                ->with('product', $product);
+                ->with('product', $product)
+                ->with('packagingList', $packagingList)
+                ->with('freightList', $freightList);
     }
 
     /**

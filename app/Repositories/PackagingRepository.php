@@ -26,10 +26,10 @@ class PackagingRepository extends BaseRepository
     	return $this->packaging->paginate();
     }
 
-    public function create()
-    {
-    	return $this->packaging->create($data);
-    }
+    // public function create()
+    // {
+    // 	return $this->packaging->create($data);
+    // }
 	
 	
 }

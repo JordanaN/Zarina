@@ -3,6 +3,7 @@
 return [
 	'navbar' =>[
 		'products' => 'Produtos',
-		'packagings' => 'Embalagens'
+		'packagings' => 'Embalagens',
+		'providers' => 'Fornecedor',
 	],
 ];

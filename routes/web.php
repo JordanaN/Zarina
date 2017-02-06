@@ -15,7 +15,11 @@ Route::get('/', function () {
     return view('welcome');   
 });
 
+Auth::routes();
+Route::get('/home', 'HomeController@index');
+
 Route::group(['prefix' => 'admin'], function() {
+
 
 	//produtos
 	Route::resource('produtos', 'ProductsController');
@@ -27,10 +31,7 @@ Route::group(['prefix' => 'admin'], function() {
 	Route::resource('frete', 'FreightsController');	
 
 	//fornecedores de embalagens
-	Route::resource('fornecedor', 'ProviderController');
+	Route::resource('fornecedor', 'CatererController');
 
 });
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index');

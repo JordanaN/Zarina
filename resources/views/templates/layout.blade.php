@@ -55,6 +55,9 @@
                         <a href="{{route('embalagens.index')}}"> {{trans('layout_admin.navbar.packagings')}}</a>
                     </li>
                     <li>
+                        <a href="{{route('fornecedor.index')}}"> {{trans('layout_admin.navbar.providers')}}</a>
+                    </li>
+                    <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"> Fretes </a>
                         <ul id="demo" class="collapse">
                             <li>

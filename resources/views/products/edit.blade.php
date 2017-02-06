@@ -22,6 +22,14 @@
 	    	<input type="text" name="cost_price" value="{{$product->cost_price}}" class="form-control">	    	
 	    </div>
   	</div>
+  	<div class="form-group col-md-5">
+	    <label>{{trans('product.forms.packaging')}}</label>      
+  		{{ Form::select('packaging', $packagingList, null, array('class' => 'form-control')) }}	    
+	</div>
+	<div class="form-group col-md-5">
+	    <label>{{trans('product.forms.freight')}}</label>      
+	      {{ Form::select('packaging', $freightList, null, array('class' => 'form-control')) }}	 
+	  	</div>
   	<div class="form-group col-md-8">
 		<label>Código de Barras</label>
 		<input type="text" name="code" value="{{$product->code}}" class="form-control">
