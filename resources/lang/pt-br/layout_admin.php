@@ -4,6 +4,6 @@ return [
 	'navbar' =>[
 		'products' => 'Produtos',
 		'packagings' => 'Embalagens',
-		'providers' => 'Fornecedor',
+		'caterers' => 'Fornecedor',
 	],
 ];

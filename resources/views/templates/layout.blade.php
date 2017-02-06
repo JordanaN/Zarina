@@ -67,6 +67,13 @@
                           {{trans('layout_admin.navbar.packagings')}}
                         </a>
                     </li>
+                    <li> 
+                    <li>
+                        <a href="{{route('fornecedor.index')}}">
+                          <i class="fa fa-dropbox" aria-hidden="true"></i>
+                          {{trans('layout_admin.navbar.caterers')}}
+                        </a>
+                    </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo">
                           <i class="fa fa-rocket" aria-hidden="true"></i>
