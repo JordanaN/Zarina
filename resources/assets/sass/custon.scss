@@ -1,0 +1,119 @@
+// Navbar
+
+  body{
+    background-color: #fff !important;
+  }
+
+  [data-nav="blue"]{
+    background-color: $navbar-blue-bg;
+  }
+
+  .navbar-brand img{
+    width: 66%;
+  }
+
+  .navbar-header {
+    width: 226px;
+  }
+
+  .navbar {
+    min-height: 52px;
+  }
+
+  .top-nav>li>a {
+    color: $navbar-link !important;
+}
+
+.top-nav>li>a:hover, .top-nav>li>a:focus, .top-nav>.open>a, .top-nav>.open>a:hover, .top-nav>.open>a:focus {
+    background-color: $navbar-hover !important;
+}
+
+// Sidebar
+
+.navbar-default .navbar-nav > li > a {
+    color: $navbar-link;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus{
+    color: $navbar-link;
+}
+
+i{
+    padding-right: 30px;
+}
+
+// Products
+
+#wrapper{
+  position: absolute;
+  width: 100%;
+}
+.table-responsive {
+    overflow-x: visible;
+}
+
+.header > h1 > i {
+  color: $navbar-blue-bg;
+}
+
+.delete{
+  border: 0;
+  background: transparent;
+  color: red;
+}
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {
+    background-color: $navbar-blue-bg;
+    border-color: $navbar-blue-bg;
+}
+
+.action{
+  font-size: large;
+}
+
+.space-buttom {
+  color: $navbar-blue-bg !important;
+}
+
+[data-app="qty"] > i{
+  padding-right: 0px;
+  font-size: large;
+}
+
+[data-action="minus"]{
+  color: $navbar-blue-bg;
+}
+
+[data-action="plus"]{
+  color: $navbar-blue-bg;
+}
+
+[name="amount"]{
+  width: 20%;
+  display: initial;
+}
+
+.input-group-addon{
+  background-color: $navbar-blue-bg;
+}
+
+.modal-title{
+  color:red;
+}
+
+.modal-header{
+  border: 0px;
+}
+
+// Login
+
+#login{
+  background-color: $navbar-blue-bg !important;
+}
+
+#app{
+  margin-top: 10%;
+}
+
+.logo{
+  margin-bottom: 40px;
+}

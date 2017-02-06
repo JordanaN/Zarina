@@ -38,5 +38,3 @@ jQuery('button[name="Delete"]').on('click', function(e){
     }
   });
 });
-
-//# sourceMappingURL=all.js.map

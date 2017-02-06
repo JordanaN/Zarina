@@ -13,19 +13,18 @@ require('laravel-elixir-vue-2');
  |
  */
 
-elixir(mix => {
-    mix.sass('app.scss')
-    .webpack('app.js');       
-});
 
 elixir(function(mix) {
     mix.styles([
-        "sb-admin.css",
+        "normalize.css",
         "font-awesome.min.css",
-        "normalize.css"
+        "sb-admin.css"
     ]);
 });
 
+elixir(mix => {
+  mix.sass('app.scss')
+});
 // Fonts
 gulp.task('fonts', function() {
     return gulp.src([
@@ -38,7 +37,6 @@ gulp.task('fonts', function() {
 
 elixir(function(mix) {
     mix.scripts([
-        'bootstrap.js',
-        'jquery.min.js'
+        'custon.js'
     ]);
 });

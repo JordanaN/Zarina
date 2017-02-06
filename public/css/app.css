@@ -1,5 +1,6 @@
 @charset "UTF-8";
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
@@ -7686,6 +7687,120 @@ button.close {
   .hidden-print {
     display: none !important;
   }
+}
+
+body {
+  background-color: #fff !important;
+}
+
+[data-nav="blue"] {
+  background-color: #6ebab1;
+}
+
+.navbar-brand img {
+  width: 66%;
+}
+
+.navbar-header {
+  width: 226px;
+}
+
+.navbar {
+  min-height: 52px;
+}
+
+.top-nav > li > a {
+  color: #fff !important;
+}
+
+.top-nav > li > a:hover, .top-nav > li > a:focus, .top-nav > .open > a, .top-nav > .open > a:hover, .top-nav > .open > a:focus {
+  background-color: #4a9e94 !important;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #fff;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+  color: #fff;
+}
+
+i {
+  padding-right: 30px;
+}
+
+#wrapper {
+  position: absolute;
+  width: 100%;
+}
+
+.table-responsive {
+  overflow-x: visible;
+}
+
+.header > h1 > i {
+  color: #6ebab1;
+}
+
+.delete {
+  border: 0;
+  background: transparent;
+  color: red;
+}
+
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {
+  background-color: #6ebab1;
+  border-color: #6ebab1;
+}
+
+.action {
+  font-size: large;
+}
+
+.space-buttom {
+  color: #6ebab1 !important;
+}
+
+[data-app="qty"] > i {
+  padding-right: 0px;
+  font-size: large;
+}
+
+[data-action="minus"] {
+  color: #6ebab1;
+}
+
+[data-action="plus"] {
+  color: #6ebab1;
+}
+
+[name="amount"] {
+  width: 20%;
+  display: initial;
+}
+
+.input-group-addon {
+  background-color: #6ebab1;
+}
+
+.modal-title {
+  color: red;
+}
+
+.modal-header {
+  border: 0px;
+}
+
+#login {
+  background-color: #6ebab1 !important;
+}
+
+#app {
+  margin-top: 10%;
+}
+
+.logo {
+  margin-bottom: 40px;
 }
 
 /*# sourceMappingURL=app.css.map */
