@@ -7783,4 +7783,12 @@ i {
   background-color: #6ebab1;
 }
 
+.modal-title {
+  color: red;
+}
+
+.modal-header {
+  border: 0px;
+}
+
 /*# sourceMappingURL=app.css.map */

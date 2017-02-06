@@ -24,7 +24,6 @@ elixir(function(mix) {
 
 elixir(mix => {
   mix.sass('app.scss')
-  .webpack('app.js');
 });
 // Fonts
 gulp.task('fonts', function() {
@@ -38,7 +37,6 @@ gulp.task('fonts', function() {
 
 elixir(function(mix) {
     mix.scripts([
-        'app.js',
-        'jquery.min.js'
+        'custon.js'
     ]);
 });
