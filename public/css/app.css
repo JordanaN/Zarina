@@ -7791,4 +7791,16 @@ i {
   border: 0px;
 }
 
+#login {
+  background-color: #6ebab1 !important;
+}
+
+#app {
+  margin-top: 10%;
+}
+
+.logo {
+  margin-bottom: 40px;
+}
+
 /*# sourceMappingURL=app.css.map */
