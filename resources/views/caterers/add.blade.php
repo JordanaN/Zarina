@@ -2,16 +2,22 @@
 
 @section('content')
 
+    @if(Session::has('error'))
+            <div class="alert alert-danger">
+                {{Session::get('error')}}       
+            </div>
+        @endif
+
 <form action="{{ route('fornecedor.store') }}" method="POST">
-	<input type="hidden" name="_token" value="{{ csrf_token() }}">
-	
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+    
     <div class="form-group col-md-5">
-		<label>{{trans('caterer.forms.name')}}</label>
-		<input type="text" name='name' class="form-control" required>
+        <label>{{trans('caterer.forms.name')}}</label>
+        <input type="text" name='name' class="form-control" required>
     </div>
     <div class="form-group col-md-5">
 		<label>{{trans('caterer.forms.phone')}}</label>
-		<input type="text" name='phone' class="form-control">
+		<input type="text" name='phone' class="form-control" required>
     </div>
     <div class="form-group col-md-5">
 		<label>{{trans('caterer.forms.address')}}</label>

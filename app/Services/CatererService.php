@@ -60,4 +60,33 @@ class CatererService
 		return $this->repository->findById($id);
 	}
 
+	/**
+	 * Metodo faz a atualização dos dados do fornecedor
+	 * @param  [Array] $[data] [array com novos dados]
+	 * @param  [Integer] $[id] [id do fornecedor a ser atualizado]
+	 * @returm	Boolean
+	 */
+	public function updateCaterers($data, $id)
+	{
+		$caterer =  $this->findCatererById($id);
+
+		if (!$caterer) {
+			return null;
+		}
+
+		$caterer->name = $data['name'];
+		$caterer->phone = $data['phone'];
+		$caterer->address = $data['address'];
+		$caterer->number = $data['number'];
+		$caterer->district = $data['district'];
+		$caterer->city = $data['city'];
+		$caterer->state = $data['state'];
+
+		if ($caterer->save()) {
+			return true;
+		}
+
+		return false;
+	}
+
 }

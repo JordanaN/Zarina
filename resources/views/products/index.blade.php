@@ -24,7 +24,7 @@
 <hr>
 
 <div class="col-md-12">
-	<a class="btn btn-primary pull-right" href="{{route('produtos.create')}}" role="button">Adicionar novo produto</a>
+	<a class="btn btn-primary pull-right" href="{{route('produto.create')}}" role="button">Adicionar novo produto</a>
 </div>
 	<div class="table-responsive">
 	    <table class="table table-striped">
@@ -44,10 +44,10 @@
 	 			<td class="visible-md visible-lg">{{ $product->cost_price }}</td>
 	 			<td class="action">
 					<span class="col-md-6">
-						<a class="space-buttom" href="{{route('produtos.edit', $product->id)}}" alt="Editar"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+						<a class="space-buttom" href="{{route('produto.edit', $product->id)}}" alt="Editar"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
 					</span>
 					<span class="col-md-6">
-						<form action="{{ route('produtos.destroy', $product->id) }}" method="POST">
+						<form action="{{ route('produto.destroy', $product->id) }}" method="POST">
 									 <input type="hidden" name="_method" value="DELETE">
 									 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 									 <button type="submit" class="delete" name="Delete"><i class="fa fa-trash" aria-hidden="true"></i> </button>

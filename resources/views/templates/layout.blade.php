@@ -28,7 +28,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{route('produtos.index')}}">
+                <a class="navbar-brand" href="{{route('produto.index')}}">
                   <img src="{{asset('image/Zarina.png')}}" class="logo">
                 </a>
             </div>
@@ -56,13 +56,13 @@
                       </a>
                     </li>
                     <li>
-                      <a href="{{route('produtos.index')}}">
+                      <a href="{{route('produto.index')}}">
                           <i class="fa fa-product-hunt" aria-hidden="true"></i>
                           {{trans('layout_admin.navbar.products')}}
                       </a>
                     </li>
                     <li>
-                        <a href="{{route('embalagens.index')}}">
+                        <a href="{{route('embalagem.index')}}">
                           <i class="fa fa-dropbox" aria-hidden="true"></i>
                           {{trans('layout_admin.navbar.packagings')}}
                         </a>

@@ -2,13 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use Validator;
 use Illuminate\Http\Request;
 use App\Services\CatererService;
 use Illuminate\Support\Facades\Lang;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+
 
 
 class CatererController extends Controller
 {
+
+    use ValidatesRequests;
+
+    protected $validateRulesCaterers =[
+        'name' => 'required|min:2'
+    ];
+
     /**
      * @var  App\Services\PackagingService
      */
@@ -18,8 +28,6 @@ class CatererController extends Controller
     {
         $this->catererService = $catererService;
     }
-
-
 
 
     /**
@@ -52,10 +60,12 @@ class CatererController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->except('_token');
+        $data = $request->except('_token');        
+        
+        $validator = Validator::make($data, $this->validateRulesCaterers);
 
-        if(empty($data['name'])) {
-              return back()->withInput(\Lang::trans('caterer.messages.fails_field'));
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->with('error', \Lang::trans('caterer.messages.error'));
         }
 
         $response = $this->catererService->createNewCaterer($data);
@@ -91,8 +101,7 @@ class CatererController extends Controller
         $caterer = $this->catererService->findCatererById($id);
         
         if (!$caterer) {
-            return redirect()->route('fornecedor.index')->with('error', \Lang::trans('caterer.messages.fails'));
-            
+            return redirect()->route('fornecedor.index')->with('error', \Lang::trans('caterer.messages.fails'));            
         }
         return view('caterers.edit')->with('caterer', $caterer);
     }
@@ -106,7 +115,21 @@ class CatererController extends Controller
      */
     public function update(Request $request, $id)
     {
-           
+        $data = $request->except('_token', '_method');       
+
+        $validator = Validator::make($data, $this->validateRulesCaterers);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->with('error', \Lang::trans('caterer.messages.error'));
+        }
+
+        $response = $this->catererService->updateCaterers($data, $id);
+
+         if (!$response) {
+            return redirect()->route('fornecedor.index')->with('error', \Lang::trans('caterer.messages.error_update'));
+        }
+
+        return redirect()->route('fornecedor.index')->with('success',  \Lang::trans('caterer.messages.success_update'));
     }
 
     /**

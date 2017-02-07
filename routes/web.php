@@ -20,12 +20,11 @@ Route::get('/home', 'HomeController@index');
 
 Route::group(['prefix' => 'admin'], function() {
 
-
 	//produtos
-	Route::resource('produtos', 'ProductsController');
+	Route::resource('produto', 'ProductsController');
 
 	//embalagens
-	Route::resource('embalagens', 'PackagingsController');
+	Route::resource('embalagem', 'PackagingsController');
 
 	//frete
 	Route::resource('frete', 'FreightsController');	

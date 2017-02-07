@@ -28,6 +28,7 @@
 	 		<thead>
 		 		<tr>
 		 			<th width="300px">{{trans('caterer.model.provider')}}</th>		 			
+		 			<th width="300px">{{trans('caterer.model.phone')}}</th>		 			
 		 			<th width="190px"></th> 			
 		 		</tr>	 			
 	 		</thead>
@@ -35,6 +36,7 @@
 	 		<tr>
 				@foreach($caterers as $caterer)
 	 			<td>{{ str_limit($caterer->name, 30) }}</td>
+	 			<td>{{ str_limit($caterer->phone, 30) }}</td>
 	 			<td>
 	 				<a class="btn btn-default space-buttom" href="{{route('fornecedor.edit', $caterer->id)}}">{{trans('caterer.buttons.edit')}}</a>
 					<form action="{{ route('fornecedor.edit', $caterer->id) }}" method="POST">

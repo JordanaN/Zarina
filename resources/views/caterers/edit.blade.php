@@ -12,7 +12,7 @@
     </div>
     <div class="form-group col-md-5">
 		<label>{{trans('caterer.forms.phone')}}</label>
-		<input type="text" name='phone' value="{{$caterer->phone}}" class="form-control">
+		<input type="text" name='phone' value="{{$caterer->phone}}" class="form-control" required>
     </div>
     <div class="form-group col-md-5">
 		<label>{{trans('caterer.forms.address')}}</label>

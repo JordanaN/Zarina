@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form action="{{ route('embalagens.store') }}" method="POST">
+<form action="{{ route('embalagem.store') }}" method="POST">
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 	<div class="form-group col-md-12">
@@ -23,7 +23,7 @@
   	</div> 
     <div class="col-md-12">    	
     	<button type="submit" class="btn btn-primary">{{trans('packaging.buttons.save')}}</button>
-    	<a href="{{route('embalagens.index')}}" class="btn btn-default">{{trans('packaging.buttons.cancel')}}</a>
+    	<a href="{{route('embalagem.index')}}" class="btn btn-default">{{trans('packaging.buttons.cancel')}}</a>
     	
     </div>
 	

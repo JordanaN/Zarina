@@ -15,7 +15,7 @@
 	</div>
 
 	<div class="col-md-12 zs-space">		
-		<a class="btn btn-primary pull-right" href="{{route('embalagens.create')}}" role="button">{{trans('packaging.buttons.add')}}</a>
+		<a class="btn btn-primary pull-right" href="{{route('embalagem.create')}}" role="button">{{trans('packaging.buttons.add')}}</a>
 	</div>
 
 
@@ -40,8 +40,8 @@
 	 			<td class="visible-md visible-lg">{{ $packaging->amount }}</td>
 	 			<td class="visible-md visible-lg">{{ $packaging->price }}</td>
 	 			<td>
-	 				<a class="btn btn-default space-buttom" href="{{route('embalagens.edit', $packaging->id)}}">{{trans('packaging.buttons.edit')}}</a>
-					<form action="{{ route('embalagens.destroy', $packaging->id) }}" method="POST">
+	 				<a class="btn btn-default space-buttom" href="{{route('embalagem.edit', $packaging->id)}}">{{trans('packaging.buttons.edit')}}</a>
+					<form action="{{ route('embalagem.destroy', $packaging->id) }}" method="POST">
 		             <input type="hidden" name="_method" value="DELETE">
 		             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 		             <button type="submit" class="btn btn-danger">{{trans('packaging.buttons.delete')}} </button>

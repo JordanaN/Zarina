@@ -10,7 +10,7 @@
 </div>
 <hr>
 
-<form action="{{ route('produtos.update', $product->id) }}" method="POST">
+<form action="{{ route('produto.update', $product->id) }}" method="POST">
 	<input type="hidden" name="_method" value="PUT">
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 	<div class="form-group col-md-8">
@@ -51,7 +51,7 @@
 		</div>
     <div class="col-md-12">
     	<button type="submit" class="btn btn-primary">Atualiza</button>
-    	<a href="{{route('produtos.index')}}" class="btn btn-danger">Cancelar</a>
+    	<a href="{{route('produto.index')}}" class="btn btn-danger">Cancelar</a>
     </div>
 </form>
 

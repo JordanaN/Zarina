@@ -12,7 +12,7 @@
 <hr>
 
 
-<form action="{{ route('produtos.store') }}" method="POST">
+<form action="{{ route('produto.store') }}" method="POST">
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 	<div class="form-group col-md-8">
 		<label>Nome</label>
@@ -53,7 +53,7 @@
 
   <div class="col-md-12">
   	<button type="submit" class="btn btn-primary">Cadastrar</button>
-  	<a href="{{route('produtos.index')}}" class="btn btn-danger">Cancelar</a>
+  	<a href="{{route('produto.index')}}" class="btn btn-danger">Cancelar</a>
   </div>
 </form>
 @endsection
