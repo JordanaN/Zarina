@@ -14,17 +14,23 @@
 		@endif
 	</div>
 
+
+	<div class="header">
+		<h1>
+			<i class="fa fa-users" aria-hidden="true"></i>
+			{{trans('caterer.model.title')}}
+		</h1>
+	</div>
+	<hr>
+
 	<div class="col-md-12 zs-space">		
 		<a class="btn btn-primary pull-right" href="{{route('fornecedor.create')}}" role="button">{{trans('caterer.buttons.add')}}</a>
 	</div>
 
 
-	<div class="clearfix"></div>
-		
-    <h1>{{trans('caterer.model.title')}}</h1>
-	
+
 	<div class="table-responsive">
-	    <table class="table">
+	    <table class="table table-striped">
 	 		<thead>
 		 		<tr>
 		 			<th width="300px">{{trans('caterer.model.provider')}}</th>		 			
@@ -37,14 +43,20 @@
 				@foreach($caterers as $caterer)
 	 			<td>{{ str_limit($caterer->name, 30) }}</td>
 	 			<td>{{ str_limit($caterer->phone, 30) }}</td>
-	 			<td>
-	 				<a class="btn btn-default space-buttom" href="{{route('fornecedor.edit', $caterer->id)}}">{{trans('caterer.buttons.edit')}}</a>
-					<form action="{{ route('fornecedor.edit', $caterer->id) }}" method="POST">
-		             <input type="hidden" name="_method" value="DELETE">
-		             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-		             <button type="submit" class="btn btn-danger">{{trans('caterer.buttons.delete')}} </button>
-		          </form>	 			    
-	 			</td>
+					<td class="action">
+					<span class="col-md-6">
+						<a class="space-buttom" href="{{route('fornecedor.edit', $caterer->id)}}" alt="Editar">
+							<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+						</a>
+					</span>
+						<span class="col-md-6">
+						<form action="{{ route('fornecedor.edit', $caterer->id) }}" method="POST">
+							<input type="hidden" name="_method" value="DELETE">
+							<input type="hidden" name="_token" value="{{ csrf_token() }}">
+							<button type="submit" class="delete" name="Delete"><i class="fa fa-trash" aria-hidden="true"></i> </button>
+						</form>
+					</span>
+					</td>
 	 		</tr>	 			
 				@endforeach
 	 		</tbody>

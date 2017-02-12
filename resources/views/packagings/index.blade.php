@@ -26,10 +26,6 @@
 		<a class="btn btn-primary pull-right" href="{{route('embalagem.create')}}" role="button">{{trans('packaging.buttons.add')}}</a>
 	</div>
 
-
-	<div class="clearfix"></div>
-		
-
 	<div class="table-responsive">
 	    <table class="table table-striped">
 	 		<thead>
