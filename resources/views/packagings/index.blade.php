@@ -14,6 +14,14 @@
 		@endif
 	</div>
 
+	<div class="header">
+		<h1>
+			<i class="fa fa-dropbox" aria-hidden="true"></i>
+			{{trans('packaging.model.title')}}
+		</h1>
+	</div>
+	<hr>
+
 	<div class="col-md-12 zs-space">		
 		<a class="btn btn-primary pull-right" href="{{route('embalagem.create')}}" role="button">{{trans('packaging.buttons.add')}}</a>
 	</div>
@@ -21,10 +29,9 @@
 
 	<div class="clearfix"></div>
 		
-    <h1>{{trans('packaging.model.title')}}</h1>
-	
+
 	<div class="table-responsive">
-	    <table class="table">
+	    <table class="table table-striped">
 	 		<thead>
 		 		<tr>
 		 			<th width="300px">{{trans('packaging.model.provider')}}</th>
@@ -39,14 +46,25 @@
 	 			<td>{{ str_limit($packaging->provider, 30) }}</td>
 	 			<td class="visible-md visible-lg">{{ $packaging->amount }}</td>
 	 			<td class="visible-md visible-lg">{{ $packaging->price }}</td>
-	 			<td>
-	 				<a class="btn btn-default space-buttom" href="{{route('embalagem.edit', $packaging->id)}}">{{trans('packaging.buttons.edit')}}</a>
-					<form action="{{ route('embalagem.destroy', $packaging->id) }}" method="POST">
-		             <input type="hidden" name="_method" value="DELETE">
-		             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-		             <button type="submit" class="btn btn-danger">{{trans('packaging.buttons.delete')}} </button>
-		          </form>	 			    
-	 			</td>
+				<td class="action">
+				<span class="col-md-6">
+					<a class="space-buttom" href="{{route('embalagem.edit', $packaging->id)}}" alt="Editar"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+				</span>
+					<span class="col-md-6">
+					<form action="{{ route('embalagem.destroy', $packaging->id) }}"" method="POST">
+								 <input type="hidden" name="_method" value="DELETE">
+								 <input type="hidden" name="_token" value="{{ csrf_token() }}">
+								 <button type="submit" class="delete" name="Delete"><i class="fa fa-trash" aria-hidden="true"></i> </button>
+					</form>
+				</span>
+				{{--</td>--}}
+					{{--<td>--}}
+	 				{{--<a class="btn btn-default space-buttom" href="{{route('embalagem.edit', $packaging->id)}}">{{trans('packaging.buttons.edit')}}</a>--}}
+					{{--<form action="{{ route('embalagem.destroy', $packaging->id) }}" method="POST">--}}
+		             {{--<input type="hidden" name="_method" value="DELETE">--}}
+		             {{--<input type="hidden" name="_token" value="{{ csrf_token() }}"><button type="submit" class="delete" name="Delete"><i class="fa fa-trash" aria-hidden="true"></i> </button>--}}
+		          {{--</form>	 			    --}}
+	 			{{--</td>--}}
 	 		</tr>	 			
 				@endforeach
 	 		</tbody>
