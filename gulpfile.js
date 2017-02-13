@@ -18,13 +18,13 @@ elixir(function(mix) {
     mix.styles([
         "normalize.css",
         "font-awesome.min.css",
-        "sb-admin.css"
+        "sb-admin.css",
+        "../../../node_modules/parsleyjs/src/parsley.css"
     ]);
+
+    mix.sass('app.scss');
 });
 
-elixir(mix => {
-  mix.sass('app.scss')
-});
 // Fonts
 gulp.task('fonts', function() {
     return gulp.src([
@@ -37,6 +37,8 @@ gulp.task('fonts', function() {
 
 elixir(function(mix) {
     mix.scripts([
-        'custon.js'
+        "../../../node_modules/parsleyjs/dist/parsley.js",
+        "../../../node_modules/parsleyjs/dist/i18n/pt-br.js",
+        "custon.js"
     ]);
 });

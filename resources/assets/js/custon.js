@@ -38,3 +38,7 @@ jQuery('button[name="Delete"]').on('click', function(e){
     }
   });
 });
+
+//Form Validate
+jQuery('#AddProduct').parsley();
+

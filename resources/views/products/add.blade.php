@@ -12,11 +12,11 @@
 <hr>
 
 
-<form action="{{ route('produto.store') }}" method="POST">
+<form data-parsley-validate id="AddProduct" action="{{ route('produto.store') }}" method="POST">
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 	<div class="form-group col-md-8">
 		<label>Nome</label>
-		<input type="text" name='name' value="" class="form-control" placeholder="Nome do Produto">
+		<input type="text" name='name' value="" class="form-control" placeholder="Nome do Produto" required pattern="[a-z]">
 	</div>
 	<div class="form-group col-md-4">
 		<label>{{trans('product.forms.amount')}}</label>
