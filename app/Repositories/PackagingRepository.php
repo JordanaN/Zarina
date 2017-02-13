@@ -21,15 +21,23 @@ class PackagingRepository extends BaseRepository
         return 'App\Entities\Packaging';
     }
 
+    /**
+     * Metodo retorna todos as embalagens paginadas
+     */
     public function allPackagings()
     {
     	return $this->packaging->paginate();
     }
 
-    // public function create()
-    // {
-    // 	return $this->packaging->create($data);
-    // }
+    /**
+     * Metodo cria um novo cadastro de embalagem no banco
+     * @param Array $data dados para a nova embalagem
+     * @return Boolean 
+     */
+    public function createPackaging($data)
+    {
+    	return $this->packaging->create($data);
+    }
 	
 	
 }

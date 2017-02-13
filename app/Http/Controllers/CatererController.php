@@ -37,7 +37,7 @@ class CatererController extends Controller
      */
     public function index()
     {
-        $caterers = $this->catererService->findAllCaterers();
+        $caterers = $this->catererService->findAllPaginate();
 
         return view('caterers.index')->with('caterers', $caterers);
     }
@@ -140,6 +140,12 @@ class CatererController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $caterer = $this->catererService->findCatererById($id);
+
+        if(!$caterer->delete()) {
+            return redirect()->route('fornecedor.index')->with('error', \Lang::trans('caterer.messages.error_delete'));
+        }
+
+        return redirect()->route('fornecedor.index')->with('success', \Lang::trans('caterer.messages.success_delete'));
     }
 }

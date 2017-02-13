@@ -39,7 +39,7 @@
 	 			<td>{{ str_limit($caterer->phone, 30) }}</td>
 	 			<td>
 	 				<a class="btn btn-default space-buttom" href="{{route('fornecedor.edit', $caterer->id)}}">{{trans('caterer.buttons.edit')}}</a>
-					<form action="{{ route('fornecedor.edit', $caterer->id) }}" method="POST">
+					<form action="{{ route('fornecedor.destroy', $caterer->id) }}" method="POST">
 		             <input type="hidden" name="_method" value="DELETE">
 		             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 		             <button type="submit" class="btn btn-danger">{{trans('caterer.buttons.delete')}} </button>

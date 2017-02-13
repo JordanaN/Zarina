@@ -23,7 +23,7 @@ class CatererService
 	/**
 	 * Metodo busca todos os fornecedores cadastrados no banco
 	 */
-	public function findAllCaterers()
+	public function findAllPaginate()
 	{
 		return $this->repository->findAll();
 	}
@@ -87,6 +87,27 @@ class CatererService
 		}
 
 		return false;
+	}
+
+	public function findAllCaterers()
+	{
+		return $this->repository->findAll();
+	}
+
+	/**
+	 * Metodo retorna name e o ID do fornencedor
+	 */
+	public function catererFindName()
+	{
+		$caterersList = $this->findAllCaterers()->toArray();
+
+		$caterers = [];
+        foreach ($caterersList as $key => $value) {
+            $caterers[$value['id']] = $value['name'];            
+        }
+
+        return $caterers;
+
 	}
 
 }

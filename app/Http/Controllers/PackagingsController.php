@@ -2,23 +2,50 @@
 
 namespace App\Http\Controllers;
 
+use Validator;
 use Illuminate\Http\Request;
 use App\Services\PackagingService;
 use Illuminate\Support\MessageBag;
+use App\Entities\Packaging;
+use App\Services\CatererService;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+
 
 
 class PackagingsController extends Controller
 {    
-    
+     use ValidatesRequests;
+
+    /**
+     * Validadtor
+     */
+    protected $validateRulesPackaging =[
+        'caterers' => 'required',
+        'amount' => 'required',
+        'price' => 'required'
+    ];
+
+
     /**
      * @var App\Services\PackagingService
      */
     protected $packagingService;
 
-    public function __construct(PackagingService $packagingService)
-    {
+    /**
+     * @var App\Services\CatererService
+     */
+    protected $catererService;
+
+
+    public function __construct(
+        PackagingService $packagingService,
+        CatererService $catererService
+    ){
         $this->packagingService = $packagingService;
+        $this->catererService = $catererService;
     }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -27,8 +54,12 @@ class PackagingsController extends Controller
     public function index()
     {
         $packagings = $this->packagingService->findAllPackagings();
+
+        $caterers = $this->catererService->catererFindName();
+
         return view('packagings.index')
-        ->with('packagings', $packagings);
+        ->with('packagings', $packagings)
+        ->with('caterers', $caterers);
     }
 
     /**
@@ -38,8 +69,10 @@ class PackagingsController extends Controller
      */
     public function create()
     {
-        $providerList = ['teste', 'teste'];
-        return view('packagings.add')->with('providerList', $providerList);
+        $caterers = $this->catererService->catererFindName()->toArray();        
+
+        return view('packagings.add')
+        ->with('caterers', $caterers);
     }
 
     /**
@@ -50,11 +83,21 @@ class PackagingsController extends Controller
      */
     public function store(Request $request)
     {
-        // $data = $request->except('_token');
+        $data = $request->except('_token');
 
-        // $response = $this->packagingService->createNewPackaging($data);
+        $validator = Validator::make($data, $this->validateRulesPackaging);
 
-        // dd($response);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->with('error', \Lang::trans('packaging.message.error_validador'));
+        }
+
+        $response = $this->packagingService->createNewPackaging($data);
+
+        if (!$response) {
+            return redirect()->route('embalagem.index')->with('error', \Lang::trans('packaging.message.error'));
+        }
+
+        return redirect()->route('embalagem.index')->with('success', \Lang::trans('packaging.message.success'));
         
     }
 

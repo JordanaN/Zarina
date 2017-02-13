@@ -30,7 +30,9 @@ return [
 		'success' => 'Fornecedor cadastrado com sucesso!',
 		'fails' => 'Não foi possivel localizar o registro.',
 		'error_update' => 'Falha ao atualizar o fornecedor!',
-		'success_update' => 'Fornecedor atualizado com sucesso.'
+		'success_update' => 'Fornecedor atualizado com sucesso.',
+		'success_delete' => 'Fornecedor deletado com sucesso.',
+		'error_delete' => ' Falha ao deletar o fornecedor'
 
 	],
 

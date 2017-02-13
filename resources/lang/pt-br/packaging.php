@@ -19,6 +19,11 @@ return [
 		'amount' => 'Quantidade',
 		'price' => 'Valor',
 	],
+	'message' => [
+		'error_validador' => 'Verifique os campos preenchidos!',
+		'error' => 'Falha ao cadastrar nova embalagem.',
+		'success' => 'Embalagem cadastrada com sucesso!',
+	],
 
 
 ];

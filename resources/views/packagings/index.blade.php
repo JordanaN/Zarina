@@ -36,7 +36,7 @@
 	 		<tbody>
 	 		<tr>
 				@foreach($packagings as $packaging)
-	 			<td>{{ str_limit($packaging->provider, 30) }}</td>
+	 			<td></td>
 	 			<td class="visible-md visible-lg">{{ $packaging->amount }}</td>
 	 			<td class="visible-md visible-lg">{{ $packaging->price }}</td>
 	 			<td>

@@ -25,20 +25,37 @@ class CatererRepository extends BaseRepository
     /**
      * Metodo retorna os registros do banco paginados
      */
-    public function findAll()
+    public function findAllPaginate()
     {
     	return $this->caterer->paginate();
     }
 
+    /**
+     * Metodo cria um novo fornecedor no banco
+     * @param Array $data dados para a criação do novo fornecedor
+     */
 
     public function createCaterer($data)
     {
     	return $this->caterer->create($data);
     }
 
+    /**
+     * Método busca fornecedor pelo ID
+     * @param Integer $id da entidade a ser pesquisada
+     * @return Model fornecedor
+     */
     public function findById($id)
     {
     	return $this->caterer->find($id);
+    }
+
+    /**
+     * Método retorna todos fornecedores do sistema
+     */
+    public function findAll()
+    {
+        return $this->caterer->All();
     }
 
 }
