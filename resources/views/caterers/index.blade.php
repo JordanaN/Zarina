@@ -50,7 +50,7 @@
 						</a>
 					</span>
 						<span class="col-md-6">
-						<form action="{{ route('fornecedor.edit', $caterer->id) }}" method="POST">
+						<form action="{{ route('fornecedor.destroy', $caterer->id) }}" method="POST">
 							<input type="hidden" name="_method" value="DELETE">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
 							<button type="submit" class="delete" name="Delete"><i class="fa fa-trash" aria-hidden="true"></i> </button>

@@ -23,6 +23,9 @@ return [
 		'error_validador' => 'Verifique os campos preenchidos!',
 		'error' => 'Falha ao cadastrar nova embalagem.',
 		'success' => 'Embalagem cadastrada com sucesso!',
+		'error_find' => 'Falha ao localizar a embalagem!',
+		'error_delete' => 'Falha ao deletar a embalagem',
+		'success_delete' => 'Embalagem deletada com sucesso'
 	],
 
 

@@ -14,9 +14,9 @@ class Caterer extends Model
     protected $fillable = ['name', 'phone', 'address', 'number', 'district', 'city', 'state'];
 
 
-     protected function packaging()
+    public function packagings()
     {
-    	return $this->belongsToMany('App\Entities\Packaging', 'caterer_packagings', 'packaging_id');
+        return $this->belongsToMany(\App\Entities\Packaging::class, 'caterer_packagings', 'caterer_id', 'packaging_id');
     }
 
 

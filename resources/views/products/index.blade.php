@@ -18,28 +18,28 @@
 <div class="header">
 	<h1>
 		<i class="fa fa-product-hunt" aria-hidden="true"></i>
-		Produtos
+		{{trans('product.title.product')}}
 	</h1>
 </div>
 <hr>
 
 <div class="col-md-12">
-	<a class="btn btn-primary pull-right" href="{{route('produto.create')}}" role="button">Adicionar novo produto</a>
+	<a class="btn btn-primary pull-right" href="{{route('produto.create')}}" role="button">{{trans('product.button.add')}}</a>
 </div>
 	<div class="table-responsive">
 	    <table class="table table-striped">
 	 		<thead>
 		 		<tr>
-		 			<th width="300px">Descrição</th>
-		 			<th class="visible-md visible-lg">Quantidade</th>
-		 			<th class="visible-md visible-lg">Preço de Custo</th>
+		 			<th width="300px">{{trans('product.table.thead.name')}}</th>
+		 			<th class="visible-md visible-lg">{{trans('product.table.thead.amount')}}</th>
+		 			<th class="visible-md visible-lg">{{trans('product.table.thead.cost_price')}}</th>
 		 			<th width="190px"></th>
 		 		</tr>
 	 		</thead>
 	 		<tbody>
 	 		<tr>
 				@foreach($products as $product)
-	 			<td>{{ str_limit($product->description, 30) }}</td>
+	 			<td>{{ str_limit($product->name, 30) }}</td>
 	 			<td class="visible-md visible-lg">{{ $product->amount }}</td>
 	 			<td class="visible-md visible-lg">{{ $product->cost_price }}</td>
 	 			<td class="action">

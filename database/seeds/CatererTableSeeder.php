@@ -12,7 +12,6 @@ class CatererTableSeeder extends Seeder
      */
     public function run()
     {
-        Caterer::truncate();
         factory(Caterer::class, 10)->create();
     }
 }

@@ -38,6 +38,24 @@ class PackagingRepository extends BaseRepository
     {
     	return $this->packaging->create($data);
     }
-	
-	
+
+    /**
+     * Método busca cadastro de embalagem pelo ID
+     * @param  integer $id da embalagem
+     * @return Model     Packagind
+     */
+    public function findById($id)
+    {
+        return $this->packaging->find($id);
+    }
+
+    /**
+     * Método deleta a embalagem pelo Id
+     * @param Model $data Model de Packaging
+     */
+    public function deletePackaging($data)
+    {
+        return $this->packaging->delete($data->id);
+
+    }
 }

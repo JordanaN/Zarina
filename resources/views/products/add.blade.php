@@ -6,7 +6,7 @@
 <div class="header">
 	<h1>
 		<i class="fa fa-plus" aria-hidden="true"></i>
-		Adicionar Produto
+		{{trans('product.title.add_product')}}
 	</h1>
 </div>
 <hr>
@@ -15,7 +15,7 @@
 <form data-parsley-validate id="AddProduct" action="{{ route('produto.store') }}" method="POST">
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 	<div class="form-group col-md-8">
-		<label>Nome</label>
+		<label>{{trans('product.forms.name')}}</label>
 		<input type="text" name='name' value="" class="form-control" placeholder="Nome do Produto" required pattern="[a-z]">
 	</div>
 	<div class="form-group col-md-4">
@@ -52,8 +52,8 @@
 	</div>
 
   <div class="col-md-12">
-  	<button type="submit" class="btn btn-primary">Cadastrar</button>
-  	<a href="{{route('produto.index')}}" class="btn btn-danger">Cancelar</a>
+  	<button type="submit" class="btn btn-primary">{{trans('product.button.save')}}</button>
+  	<a href="{{route('produto.index')}}" class="btn btn-danger">{{trans('product.button.cancel')}}</a>
   </div>
 </form>
 @endsection

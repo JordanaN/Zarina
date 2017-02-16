@@ -13,17 +13,17 @@ class PackagingService
 	/**
 	 * @var  App\Repositories\CatererPackagingRepository
 	 */
-	protected $catererPackagingRepository;
+	private $catererPackagingRepository;
    
 	/**
 	 * @var App\Repositories\PackagingRepository
 	 */
-	protected $repository;
+	private $repository;
 
 	/**
 	 * @var App\Services\CatererService
 	 */
-	protected $catererService;
+	private $catererService;
 
 	/**
 	 * Método construtor 
@@ -60,11 +60,9 @@ class PackagingService
 			return null;
 		}
 
-		$caterers = $this->catererService->findCatererById($data['caterers']);
-
 		$packaging = $this->repository->createPackaging($data);
 
-		$this->bindCatererAndPackaging($caterers, $packaging);
+		$this->bindCatererAndPackaging($data['caterers'], $packaging);
 
 		if (!$packaging) {
 			return null;
@@ -80,13 +78,43 @@ class PackagingService
 	 * @return Boolean 
 	 */
 
-	public function bindCatererAndPackaging($caterers, $packaging)
+	public function bindCatererAndPackaging($catererId, $packaging)
 	{
-		if ($packaging->caterers()->get()->isEmpty()) {
+		$caterers = $this->catererService->findCatererById($catererId);	
+
+		if (empty($caterers->packagings()->find($packaging->id))) {
 			$this->catererPackagingRepository->createCaterersAndPackagind($packaging, $caterers);
-			return true;
 		}
-		return null;
+	}
+
+	/**
+	 * Método busca cadastro embalagem pelo ID
+	 * @param Integer $id 
+	 * @return App\Entities\Packaging
+	 */
+	public function findPackagingById($id)
+	{
+		if (!$id) {
+			return null;
+		}
+		 return $this->repository->findById($id);
+	}
+
+	/**
+	 * Método deleta a embalagem pelo id
+	 * @param Integer $id 
+	 * @return Boolean 
+	 */
+	public function deletePackagingById($id)
+	{
+		$packaging = $this->findPackagingById($id);
+
+		if (empty($packaging)) {
+			return null;
+		}
+
+		return $this->repository->deletePackaging($packaging);
+
 	}
 
 
