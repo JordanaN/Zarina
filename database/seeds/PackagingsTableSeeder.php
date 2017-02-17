@@ -12,7 +12,6 @@ class PackagingsTableSeeder extends Seeder
      */
     public function run()
     {
-        Packaging::truncate();
         factory(Packaging::class, 10)->create();
     }
 }

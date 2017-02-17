@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Repositories\CatererRepository;
+use App\Entities\Packaging;
 
 
 class CatererService 
@@ -15,9 +16,10 @@ class CatererService
 	/**
 	 * Método construtor 
 	 */	
-	public function __construct(CatererRepository $repository)
+	public function __construct(CatererRepository $repository, Packaging $model)
 	{
 		$this->repository = $repository;
+		$this->model = $model;
 	}
 
 	/**
@@ -25,7 +27,7 @@ class CatererService
 	 */
 	public function findAllPaginate()
 	{
-		return $this->repository->findAll();
+		return $this->repository->findAllPaginate();
 	}
 
 
@@ -107,7 +109,41 @@ class CatererService
         }
 
         return $caterers;
+	}
 
+
+	/**
+	 * Método retorna a relação do Fornecedor com a Embalagem
+	 * @param Collection $packagings 
+	 * @return Array 
+	 */
+	public function bindPackagingAndCaterer($packagings)
+	{		
+		if (count($packagings) <=1) {
+			return $packagings->caterers()->get()->toArray();
+		}
+
+		$catererPackaging = [];
+
+		foreach ($packagings as $key => $packaging) {
+			$catererPackaging [] = $packaging->caterers()->get()->toArray();
+
+		}
+		$response = $this->preparArrayByView($catererPackaging);
+
+		return $response;
+	}
+
+	public function preparArrayByView($array)
+	{
+		$response = [];
+		foreach ($array as $key => $packaging) {
+			foreach ($packaging as $value) {
+				$response[] = $value;
+			}
+		}
+
+		return $response;
 	}
 
 }

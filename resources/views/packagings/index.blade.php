@@ -39,7 +39,8 @@
 	 		<tbody>
 	 		<tr>
 				@foreach($packagings as $packaging)
-	 			<td></td>
+					@foreach($caterers as $caterer)
+	 					<td>{{$caterer["name"]}}</td>
 	 			<td class="visible-md visible-lg">{{ $packaging->amount }}</td>
 	 			<td class="visible-md visible-lg">{{ $packaging->price }}</td>
 				<td class="action">
@@ -52,16 +53,9 @@
 								 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 								 <button type="submit" class="delete" name="Delete"><i class="fa fa-trash" aria-hidden="true"></i> </button>
 					</form>
-				</span>
-				{{--</td>--}}
-					{{--<td>--}}
-	 				{{--<a class="btn btn-default space-buttom" href="{{route('embalagem.edit', $packaging->id)}}">{{trans('packaging.buttons.edit')}}</a>--}}
-					{{--<form action="{{ route('embalagem.destroy', $packaging->id) }}" method="POST">--}}
-		             {{--<input type="hidden" name="_method" value="DELETE">--}}
-		             {{--<input type="hidden" name="_token" value="{{ csrf_token() }}"><button type="submit" class="delete" name="Delete"><i class="fa fa-trash" aria-hidden="true"></i> </button>--}}
-		          {{--</form>	 			    --}}
-	 			{{--</td>--}}
+				</span>				
 	 		</tr>	 			
+	 				@endforeach
 				@endforeach
 	 		</tbody>
 		</table>

@@ -58,10 +58,10 @@ class ProductsController extends Controller
         $response = $this->productService->newProduct($data);
 
         if (!$response) {
-            return redirect()->route('produtos.index')->with('error', 'Erro! Preencha todos os campos corretamente.');
+            return redirect()->route('produto.index')->with('error', 'Erro! Preencha todos os campos corretamente.');
         }
 
-        return redirect()->route('produtos.index')->with('success', 'Produto criado com sucesso!');
+        return redirect()->route('produto.index')->with('success', 'Produto criado com sucesso!');
 
     }
 
@@ -87,7 +87,7 @@ class ProductsController extends Controller
         $product = $this->productService->findById($id);
 
         if (!$product) {
-            return redirect()->route('produtos.index')->with('error', 'Erro! Produto não encontrado.');
+            return redirect()->route('produto.index')->with('error', 'Erro! Produto não encontrado.');
         }
         $packagingList = ['teste', 'teste2'];
         $freightList = ['teste3', 'teste4'];
@@ -111,10 +111,10 @@ class ProductsController extends Controller
         $response = $this->productService->updateProduct($data, $id);     
 
         if(!$response) {
-            return redirect()->route('produtos.index')->with('error', 'Erro! Produto não atualizado');
+            return redirect()->route('produto.index')->with('error', 'Erro! Produto não atualizado');
         }
 
-        return redirect()->route('produtos.index')->with('success', 'Produto atualizado com sucesso.');
+        return redirect()->route('produto.index')->with('success', 'Produto atualizado com sucesso.');
     }
 
     /**
@@ -128,9 +128,9 @@ class ProductsController extends Controller
         $product = $this->productService->findById($id);
 
         if(!$product->delete()) {
-            return redirect()->route('produtos.index')->with('error', 'Erro ao deletar o produto');
+            return redirect()->route('produto.index')->with('error', 'Erro ao deletar o produto');
         }
 
-        return redirect()->route('produtos.index')->with('success', 'Produto deletado com sucesso.');
+        return redirect()->route('produto.index')->with('success', 'Produto deletado com sucesso.');
     }
 }

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Services\PackagingService;
 use Illuminate\Support\MessageBag;
 use App\Entities\Packaging;
+use App\Entities\CatererPackaging;
 use App\Services\CatererService;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 
@@ -29,12 +30,12 @@ class PackagingsController extends Controller
     /**
      * @var App\Services\PackagingService
      */
-    protected $packagingService;
+    private $packagingService;
 
     /**
      * @var App\Services\CatererService
      */
-    protected $catererService;
+    private $catererService;
 
 
     public function __construct(
@@ -55,7 +56,7 @@ class PackagingsController extends Controller
     {
         $packagings = $this->packagingService->findAllPackagings();
 
-        $caterers = $this->catererService->catererFindName();
+        $caterers = $this->catererService->bindPackagingAndCaterer($packagings);
 
         return view('packagings.index')
         ->with('packagings', $packagings)
@@ -69,7 +70,7 @@ class PackagingsController extends Controller
      */
     public function create()
     {
-        $caterers = $this->catererService->catererFindName()->toArray();        
+        $caterers = $this->catererService->catererFindName();        
 
         return view('packagings.add')
         ->with('caterers', $caterers);
@@ -109,7 +110,10 @@ class PackagingsController extends Controller
      */
     public function show($id)
     {
-        //
+        /*$response = new Packaging;
+        $data = $response->find($id);
+
+        dd($data->catererPackagings());*/
     }
 
     /**
@@ -120,7 +124,23 @@ class PackagingsController extends Controller
      */
     public function edit($id)
     {
-        //
+        dd($id);
+        $packaging = $this->packagingService->findPackagingById($id);
+
+        if (!$packaging) {
+            return redirect()->route('embalagem.index')->with('error', \Lang::trans('packaging.message.errcatererPackagingsor_find'));
+        }
+
+        $caterers = $this->catererService->catererFindName();
+        $CatererPackaging = $this->catererService->bindPackagingAndCaterer($packaging);
+        $catererName = current($CatererPackaging);
+
+        return view('packagings.edit')
+        ->with('caterers', $caterers)
+        ->with('catererName', $catererName['name'])
+        ->with('packaging', $packaging);
+        
+        
     }
 
     /**
@@ -130,9 +150,10 @@ class PackagingsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
-        //
+        dd($id);
+        
     }
 
     /**
@@ -143,6 +164,12 @@ class PackagingsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $packaging = $this->packagingService->deletePackagingById($id);
+       
+        if (!$packaging) {
+            return redirect()->route('embalagem.index')->with('error', \Lang::trans('packaging.message.error_delete'));
+        }
+
+        return redirect()->route('embalagem.index')->with('success', \Lang::trans('packaging.message.success_delete'));
     }
 }

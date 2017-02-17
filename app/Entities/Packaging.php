@@ -14,11 +14,10 @@ class Packaging extends Model
 
     protected $fillable = ['amount', 'price'];
 
-    protected function providers()
+    public function caterers()
     {
-    	return $this->belongsToMany('App\Entities\Caterer', 'caterer_packagings', 'caterer_id');
+    	return $this->belongsToMany(\App\Entities\Caterer::class, 'caterer_packagings', 'packaging_id', 'caterer_id');
     }
 
     
 }
-
