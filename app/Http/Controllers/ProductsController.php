@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\ProductService;
+use App\Services\PackagingService;
 
 
 class ProductsController extends Controller
@@ -14,9 +15,12 @@ class ProductsController extends Controller
      */
     protected $productService;
 
-    public function __construct(ProductService $productService)
-    {
+    public function __construct(
+        ProductService $productService,
+        PackagingService $packagingService
+    ){
         $this->productService = $productService;
+        $this->packagingService = $packagingService;
     }
 
 
@@ -38,7 +42,8 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        $packagingList = ['teste', 'teste2'];
+        $packagingList = $this->packagingService->findAllPackagings()->toArray();
+        
         $freightList = ['teste3', 'teste4'];
         return view('products.add')
         ->with('packagingList', $packagingList)

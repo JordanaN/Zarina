@@ -39,7 +39,7 @@
 	 		<tbody>
 	 		<tr>
 				@foreach($packagings as $packaging)
-					@foreach($caterers as $caterer)
+					@foreach($packaging->caterers as $caterer)
 	 					<td>{{$caterer["name"]}}</td>
 	 			<td class="visible-md visible-lg">{{ $packaging->amount }}</td>
 	 			<td class="visible-md visible-lg">{{ $packaging->price }}</td>
@@ -48,7 +48,7 @@
 					<a class="space-buttom" href="{{route('embalagem.edit', $packaging->id)}}" alt="Editar"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
 				</span>
 					<span class="col-md-6">
-					<form action="{{ route('embalagem.destroy', $packaging->id) }}"" method="POST">
+					<form action="{{ route('embalagem.destroy', $packaging->id) }}" method="POST">
 								 <input type="hidden" name="_method" value="DELETE">
 								 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 								 <button type="submit" class="delete" name="Delete"><i class="fa fa-trash" aria-hidden="true"></i> </button>

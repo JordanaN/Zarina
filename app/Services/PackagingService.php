@@ -42,9 +42,9 @@ class PackagingService
 	 * Metodo solicita para o banco todas as model de packagings e retorna paginada
 	 * @return \LengthAwarePaginator
 	 */
-	public function findAllPackagings()
+	public function findAllPackagingsPaginate()
 	{
-		$response = $this->repository->allPackagings();
+		$response = $this->repository->allPackagingsPaginate();
 		
 		if (!$response) {
 			return null;
@@ -101,22 +101,11 @@ class PackagingService
 	}
 
 	/**
-	 * Método deleta a embalagem pelo id
-	 * @param Integer $id 
-	 * @return Boolean 
+	 * Método retorna todas as embalagens cadastradas
 	 */
-	public function deletePackagingById($id)
+	public function findAllPackagings()
 	{
-		$packaging = $this->findPackagingById($id);
-
-		if (empty($packaging)) {
-			return null;
-		}
-
-		return $this->repository->deletePackaging($packaging);
-
+		return $this->repository->allPackagings();
 	}
-
-
 }
 

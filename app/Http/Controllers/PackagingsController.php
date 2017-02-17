@@ -54,7 +54,7 @@ class PackagingsController extends Controller
      */
     public function index()
     {
-        $packagings = $this->packagingService->findAllPackagings();
+        $packagings = $this->packagingService->findAllPackagingsPaginate();
 
         $caterers = $this->catererService->bindPackagingAndCaterer($packagings);
 
@@ -164,12 +164,14 @@ class PackagingsController extends Controller
      */
     public function destroy($id)
     {
-        $packaging = $this->packagingService->deletePackagingById($id);
-       
-        if (!$packaging) {
+        $packaging = $this->packagingService->findPackagingById($id);
+
+        if (!$packaging->delete()) {
             return redirect()->route('embalagem.index')->with('error', \Lang::trans('packaging.message.error_delete'));
         }
 
         return redirect()->route('embalagem.index')->with('success', \Lang::trans('packaging.message.success_delete'));
     }
 }
+
+

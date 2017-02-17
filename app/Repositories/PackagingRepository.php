@@ -24,7 +24,7 @@ class PackagingRepository extends BaseRepository
     /**
      * Metodo retorna todos as embalagens paginadas
      */
-    public function allPackagings()
+    public function allPackagingsPaginate()
     {
     	return $this->packaging->paginate();
     }
@@ -50,12 +50,10 @@ class PackagingRepository extends BaseRepository
     }
 
     /**
-     * Método deleta a embalagem pelo Id
-     * @param Model $data Model de Packaging
+     * Método retorna todas as embalagens cadastradas
      */
-    public function deletePackaging($data)
+    public function allPackagings()
     {
-        return $this->packaging->delete($data->id);
-
+        return $this->packaging->all();
     }
 }
