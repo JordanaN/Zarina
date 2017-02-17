@@ -19,7 +19,9 @@ elixir(function(mix) {
         "normalize.css",
         "font-awesome.min.css",
         "sb-admin.css",
-        "../../../node_modules/parsleyjs/src/parsley.css"
+        "../../../node_modules/parsleyjs/src/parsley.css",
+        "../../../node_modules/keen-ui/dist/keen-ui.css",
+
     ]);
 
     mix.sass('app.scss');
@@ -28,10 +30,10 @@ elixir(function(mix) {
 // Fonts
 gulp.task('fonts', function() {
     return gulp.src([
-                    'app/node_modules/bootstrap-sass/assets/fonts/bootstrap/glyphicons-halflings-regular.*',
-                    'app/public/font-awesome/fonts/fontawesome-webfont.*',
-                    ])
-            .pipe(gulp.dest('dist/fonts/'));
+        'app/node_modules/bootstrap-sass/assets/fonts/bootstrap/glyphicons-halflings-regular.*',
+        'app/public/font-awesome/fonts/fontawesome-webfont.*',
+    ])
+        .pipe(gulp.dest('dist/fonts/'));
 });
 
 
@@ -39,6 +41,9 @@ elixir(function(mix) {
     mix.scripts([
         "../../../node_modules/parsleyjs/dist/parsley.js",
         "../../../node_modules/parsleyjs/dist/i18n/pt-br.js",
+        "../../../node_modules/vue/dist/vue.js",
+        "../../../node_modules/keen-ui/dist/keen-ui.js",
+        "components.js",
         "custon.js"
     ]);
 });

@@ -16,13 +16,13 @@
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 	<div class="form-group col-md-8">
 		<label>Nome</label>
-		<input type="text" name='name' value="" class="form-control" placeholder="Nome do Produto" required pattern="[a-z]">
+		<input type="text" name='name' value="" class="form-control" placeholder="Nome do Produto" required pattern="[A-Za-z]">
 	</div>
 	<div class="form-group col-md-4">
 		<label>{{trans('product.forms.amount')}}</label>
 		<div>
 			<span type="button" data-action="minus" data-app="qty"><i class="fa fa-minus-circle" aria-hidden="true"></i></span>
-			<input type="text" name='amount' class="form-control" required>
+			<input type="number" name='amount' class="form-control" placeholder="1" required>
 			<span type="button" data-action="plus" data-app="qty"><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
 		</div>
 	</div>
@@ -31,7 +31,7 @@
   	<label>{{trans('product.forms.cost_price')}}</label>
     <div class="input-group">
     	<div class="input-group-addon">$</div>
-    	<input type="text" name="cost_price" class="form-control" required>
+    	<input type="text" name="cost_price" class="form-control" placeholder="00,00" required pattern="[^\d+(\.|\,)\d{2}$]">
     </div>
 	</div>
   <div class="form-group col-md-4">
