@@ -124,7 +124,6 @@ class PackagingsController extends Controller
      */
     public function edit($id)
     {
-        dd($id);
         $packaging = $this->packagingService->findPackagingById($id);
 
         if (!$packaging) {
@@ -132,14 +131,18 @@ class PackagingsController extends Controller
         }
 
         $caterers = $this->catererService->catererFindName();
-        $CatererPackaging = $this->catererService->bindPackagingAndCaterer($packaging);
-        $catererName = current($CatererPackaging);
+        $catererPackaging = $this->catererService->bindPackagingAndCaterer($packaging);
+        $catererData = current($catererPackaging);
+
+        $catererName = [];
+        if (array_key_exists($catererData['id'], $caterers)) {
+            $catererName =  $catererData['id'];
+        }
 
         return view('packagings.edit')
         ->with('caterers', $caterers)
-        ->with('catererName', $catererName['name'])
+        ->with('catererName', $catererName)
         ->with('packaging', $packaging);
-        
         
     }
 

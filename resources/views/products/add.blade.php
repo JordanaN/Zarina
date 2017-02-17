@@ -35,13 +35,13 @@
     </div>
 	</div>
   <div class="form-group col-md-4">
-	@foreach($packagingList as $packaging)
+	{{-- @foreach($packagingList as $packaging) --}}
 
-  <pre>{{dump($packaging->caterers)}}</pre>
+  {{-- <pre>{{dump($packaging)}}</pre> --}}
 	    <label>{{trans('product.forms.packaging')}}</label>
   		{{-- {{ Form::select('packaging', $packagingList, null, array('class' => 'form-control')) }} --}}
 	</div>
-	@endforeach
+	{{-- @endforeach --}}
 	<div class="form-group col-md-4">
 	    <label>{{trans('product.forms.freight')}}</label>
 	      {{ Form::select('packaging', $freightList, null, array('class' => 'form-control')) }}

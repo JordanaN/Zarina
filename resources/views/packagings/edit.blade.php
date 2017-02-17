@@ -18,8 +18,7 @@
 <form action="{{ route('embalagem.update', $packaging->id) }}" method="GET">
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 	<div class="form-group col-md-12">
-	<label>{{trans('packaging.forms.provider')}}</label>	
-	<pre>{{dump($catererName)}}</pre>	
+	<label>{{trans('packaging.forms.provider')}}</label>
 		{{ Form::select('caterers', $caterers, $catererName, array('class' => 'form-control', 'required')) }}
     </div>
     <div class="form-group col-md-5">
