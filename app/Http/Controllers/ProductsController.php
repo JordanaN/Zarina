@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Services\ProductService;
 use App\Services\PackagingService;
+use App\Services\CatererService;
 
 
 class ProductsController extends Controller
@@ -17,10 +18,12 @@ class ProductsController extends Controller
 
     public function __construct(
         ProductService $productService,
-        PackagingService $packagingService
+        PackagingService $packagingService,
+        CatererService $catererService
     ){
         $this->productService = $productService;
         $this->packagingService = $packagingService;
+        $this->catererService = $catererService;
     }
 
 
@@ -42,11 +45,12 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        $packagingList = $this->packagingService->findAllPackagings()->toArray();
-        
+        $packagings = $this->packagingService->findNameAndIdPackagings();
+
         $freightList = ['teste3', 'teste4'];
         return view('products.add')
-        ->with('packagingList', $packagingList)
+        ->with('packagings', $packagings)
+        ->with('caterers', $caterers)
         ->with('freightList', $freightList);
     }
 
@@ -94,7 +98,7 @@ class ProductsController extends Controller
         if (!$product) {
             return redirect()->route('produto.index')->with('error', 'Erro! Produto não encontrado.');
         }
-        $packagingList = ['teste', 'teste2'];
+        $packagings = ['teste', 'teste2'];
         $freightList = ['teste3', 'teste4'];
 
         return view('products.edit')

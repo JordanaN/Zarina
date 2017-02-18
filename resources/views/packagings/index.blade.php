@@ -30,7 +30,8 @@
 	    <table class="table table-striped">
 	 		<thead>
 		 		<tr>
-		 			<th width="300px">{{trans('packaging.model.provider')}}</th>
+		 		<th width="300px">{{trans('packaging.model.name')}}</th>
+		 			<th>{{trans('packaging.model.provider')}}</th>
 		 			<th class="visible-md visible-lg">{{trans('packaging.model.amount')}}</th>
 		 			<th class="visible-md visible-lg">{{trans('packaging.model.price')}}</th>	
 		 			<th width="190px"></th> 			
@@ -40,7 +41,8 @@
 	 		<tr>
 				@foreach($packagings as $packaging)
 					@foreach($packaging->caterers as $caterer)
-	 					<td>{{$caterer["name"]}}</td>
+	 				<td>{{$packaging->name}}</td>
+	 				<td>{{$caterer["name"]}}</td>
 	 			<td class="visible-md visible-lg">{{ $packaging->amount }}</td>
 	 			<td class="visible-md visible-lg">{{ $packaging->price }}</td>
 				<td class="action">

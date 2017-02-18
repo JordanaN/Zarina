@@ -15,11 +15,20 @@
 		@endif
 	</div>
 
-<form action="{{ route('embalagem.update', $packaging->id) }}" method="GET">
+<form action="{{ route('embalagem.update', $packaging->id) }}" method="POST">
+	<input type="hidden" name="_method" value="PUT">	
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 	<div class="form-group col-md-12">
 	<label>{{trans('packaging.forms.provider')}}</label>
 		{{ Form::select('caterers', $caterers, $catererName, array('class' => 'form-control', 'required')) }}
+    </div>
+    <div class="form-group">
+		<label>{{trans('packaging.model.name')}}</label>
+    @if(!$packaging->name)
+    	<input type="text" name='name' class="form-control" placeholder="Não possui nome">
+    @else
+		<input type="text" name='name' value={{$packaging->name}} class="form-control" required>
+    @endif
     </div>
     <div class="form-group col-md-5">
 		<label>{{trans('packaging.forms.amount')}}</label>

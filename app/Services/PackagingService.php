@@ -107,5 +107,51 @@ class PackagingService
 	{
 		return $this->repository->allPackagings();
 	}
+
+	/**
+	 * Método retorna array de name e id dos packagings
+	 * @return Array $dataPackagings
+	 */
+	public function findNameAndIdPackagings()
+	{
+		$packagings = $this->findAllPackagings();
+		$caterers = $this->catererService->bindPackagingAndCaterer($packagings);
+
+		dd($caterers);
+
+	}
+
+
+	/**
+	 * Método atualiza dados das embalagens
+	 * @param Array $data 
+	 * @param Integer $id do produto a ser atualizado
+	 * @return  Bollean
+	 */
+	public function updatePackaging($data, $id)
+	{
+		$packaging = $this->findPackagingById($id);
+
+		if (!$packaging) {
+			return false;
+		}
+
+		$packaging->name = $data['name'];
+    	$packaging->amount = $data['amount'];
+    	$packaging->price = $data['price'];
+
+    	$caterer = $packaging->caterers()->get();
+
+    	if (!$caterer->contains($data['caterers'])) {
+    		$this->bindCatererAndPackaging($data['caterers'], $packaging);
+    	}
+
+    	if ($packaging->save()) {
+    		return true;
+    	}
+
+    	return false;	
+  
+	}
 }
 

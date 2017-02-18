@@ -23,7 +23,8 @@ class PackagingsController extends Controller
     protected $validateRulesPackaging =[
         'caterers' => 'required',
         'amount' => 'required',
-        'price' => 'required'
+        'price' => 'required',
+        'name' => 'required'
     ];
 
 
@@ -153,9 +154,24 @@ class PackagingsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($id)
+    public function update(Request $request, $id)
     {
-        dd($id);
+        $data = $request->except('_token', '_method');
+        
+        $validator = Validator::make($data, $this->validateRulesPackaging);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->with('error', \Lang::trans('packaging.message.error_validador'));
+        }
+
+        $response = $this->packagingService->updatePackaging($data, $id);
+
+        if (!$response) {
+            return redirect()->route('embalagem.index')->with('error', \Lang::trans('packaging.message.error_update'));
+        }
+
+        return redirect()->route('embalagem.index')->with('success', \Lang::trans('packaging.message.success_update'));
+        
         
     }
 

@@ -12,7 +12,7 @@ class Packaging extends Model
     protected $presenter = 'App\Presenters\PackagingPresenter';
    
 
-    protected $fillable = ['amount', 'price'];
+    protected $fillable = ['name', 'amount', 'price'];
 
     public function caterers()
     {

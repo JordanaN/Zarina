@@ -23,6 +23,10 @@
 	<label>{{trans('packaging.forms.provider')}}</label>
 		{{ Form::select('caterers', $caterers, null, array('class' => 'form-control', 'required')) }}
     </div>
+    <div class="form-group">
+		<label>{{trans('packaging.model.name')}}</label>
+		<input type="text" name='name' class="form-control" required>
+    </div>
     <div class="form-group col-md-5">
 		<label>{{trans('packaging.forms.amount')}}</label>
 		<input type="text" name='amount' class="form-control" required>

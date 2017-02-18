@@ -13,6 +13,7 @@ return [
 		'provider' => 'Fornecedor',
 		'amount' => 'Quantidade',
 		'price' => 'Preço',
+		'name' => 'Nome da Embalagem',
 	], 
 	'forms' => [
 		'provider' => 'Fornecedor',
@@ -25,7 +26,9 @@ return [
 		'success' => 'Embalagem cadastrada com sucesso!',
 		'error_find' => 'Falha ao localizar a embalagem!',
 		'error_delete' => 'Falha ao deletar a embalagem',
-		'success_delete' => 'Embalagem deletada com sucesso'
+		'success_delete' => 'Embalagem deletada com sucesso',
+		'error_update' => 'Falha ao atualizar embalagem',
+		'success_update' => 'Embalagem atualizada com sucesso'
 	],
 
 
