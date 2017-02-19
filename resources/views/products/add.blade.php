@@ -36,7 +36,7 @@
 	</div>
   <div class="form-group col-md-4">
 	    <label>{{trans('product.forms.packaging')}}</label>
-  		{{ Form::select('packaging', [], null, array('class' => 'form-control')) }}
+  		{{ Form::select('packaging', $packagings, null, array('class' => 'form-control')) }}
 	</div>
 	<div class="form-group col-md-4">
 	    <label>{{trans('product.forms.freight')}}</label>

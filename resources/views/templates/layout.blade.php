@@ -75,9 +75,9 @@
                         </a>
                     </li>
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo">
+                        <a href="{{route('frete.index')}}">
                           <i class="fa fa-rocket" aria-hidden="true"></i>
-                           Fretes
+                           {{trans('layout_admin.navbar.freights')}}
                         </a>
                     </li>
                     <li>

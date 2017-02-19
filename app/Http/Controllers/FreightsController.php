@@ -2,10 +2,36 @@
 
 namespace App\Http\Controllers;
 
+use Validator;
 use Illuminate\Http\Request;
+use App\Services\FreightService;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+
 
 class FreightsController extends Controller
 {
+     use ValidatesRequests;
+
+    /**
+     * Validadtor
+     */
+    protected $validateRulesFreight =[
+        'description' => 'required',
+        'price' => 'required'
+    ];
+
+    /**
+     * @var FreightService
+     */
+    private $freightService;
+
+    public function __construct(FreightService $freightService)
+    {
+        $this->freightService = $freightService;
+    }
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +39,10 @@ class FreightsController extends Controller
      */
     public function index()
     {
-        //
+        $freights = $this->freightService->paginateFreight();
+
+        return view('freights.index')
+        ->with('freights', $freights);
     }
 
     /**
@@ -23,7 +52,7 @@ class FreightsController extends Controller
      */
     public function create()
     {
-        //
+        return view('freights.add');
     }
 
     /**
@@ -34,7 +63,21 @@ class FreightsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->except('_token');
+
+        $validator = Validator::make($data, $this->validateRulesFreight);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->with('error', \Lang::trans('freight.message.error_validador'));
+        }
+
+        $response = $this->freightService->createNewFreight($data);
+
+        if (!$response) {
+            return redirect()->route('frete.index')->with('error', \Lang::trans('freight.message.error_save'));
+        }
+
+        return redirect()->route('frete.index')->with('success', \Lang::trans('freight.message.success_save'));
     }
 
     /**
@@ -56,7 +99,9 @@ class FreightsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $freight = $this->freightService->findFreightById($id);
+        return view('freights.edit')
+        ->with('freight', $freight);
     }
 
     /**
@@ -68,7 +113,22 @@ class FreightsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->except('_token', '_method');
+
+        $validator = Validator::make($data, $this->validateRulesFreight);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->with('error', \Lang::trans('freight.message.error_validador'));
+        }
+
+        $response = $this->freightService->updateFreight($data, $id);
+
+        if (!$response) {
+            return redirect()->route('frete.index')->with('error', \Lang::trans('freight.message.error_update'));
+        }
+
+        return redirect()->route('frete.index')->with('success', \Lang::trans('freight.message.success_update'));
+        
     }
 
     /**
@@ -79,6 +139,12 @@ class FreightsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $freight = $this->freightService->findFreightById($id);
+
+        if(!$freight->delete()) {
+            return redirect()->route('frete.index')->with('error', \Lang::trans('freight.message.error_delete'));
+        }
+
+        return redirect()->route('frete.index')->with('success',  \Lang::trans('freight.message.success_delete'));
     }
 }

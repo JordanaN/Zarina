@@ -45,12 +45,16 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        $packagings = $this->packagingService->findNameAndIdPackagings();
+        $response = $this->packagingService->findAllPackagings()->toArray();
+
+        $packagings = [];
+        foreach ($response as $packaging) {
+            $packagings[$packaging['id']] = $packaging['name'];
+        }
 
         $freightList = ['teste3', 'teste4'];
         return view('products.add')
         ->with('packagings', $packagings)
-        ->with('caterers', $caterers)
         ->with('freightList', $freightList);
     }
 
@@ -98,11 +102,21 @@ class ProductsController extends Controller
         if (!$product) {
             return redirect()->route('produto.index')->with('error', 'Erro! Produto não encontrado.');
         }
-        $packagings = ['teste', 'teste2'];
+        
+        $response = $this->packagingService->findAllPackagings()->toArray();
+
+        $packagingList = [];
+        foreach ($response as $value) {
+            $packagingList[$value['id']] = $value['name'];
+        }
+
+        $packaging = $this->packagingService->getPackagingByProduct($product);
+
         $freightList = ['teste3', 'teste4'];
 
         return view('products.edit')
                 ->with('product', $product)
+                ->with('packaging', $packaging)
                 ->with('packagingList', $packagingList)
                 ->with('freightList', $freightList);
     }

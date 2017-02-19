@@ -131,14 +131,9 @@ class PackagingsController extends Controller
             return redirect()->route('embalagem.index')->with('error', \Lang::trans('packaging.message.errcatererPackagingsor_find'));
         }
 
-        $caterers = $this->catererService->catererFindName();
-        $catererPackaging = $this->catererService->bindPackagingAndCaterer($packaging);
-        $catererData = current($catererPackaging);
-
-        $catererName = [];
-        if (array_key_exists($catererData['id'], $caterers)) {
-            $catererName =  $catererData['id'];
-        }
+        $response = $this->catererService->catererBindNameAndId($packaging);
+        
+        extract($response);        
 
         return view('packagings.edit')
         ->with('caterers', $caterers)

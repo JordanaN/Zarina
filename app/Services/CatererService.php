@@ -134,7 +134,7 @@ class CatererService
 		return $response;
 	}
 
-	public function preparArrayByView($array)
+	protected function preparArrayByView($array)
 	{
 		$response = [];
 		foreach ($array as $key => $packaging) {
@@ -144,6 +144,28 @@ class CatererService
 		}
 
 		return $response;
+	}
+
+	/**
+	 * Método
+	 * cria array com nome e id de caterers com base na relação com packaging
+	 * @param Model Packaging $packaging
+	 * @return Array $caterers e Array com nome e id de caterers
+	 */
+	public function catererBindNameAndId($packaging)
+	{
+		$caterers = $this->catererFindName();
+
+        $catererPackaging = $this->bindPackagingAndCaterer($packaging);
+        $catererData = current($catererPackaging);
+
+        $catererName = [];
+        if (array_key_exists($catererData['id'], $caterers)) {
+            $catererName =  $catererData['id'];
+        }
+
+        return compact('caterers', 'catererName');
+
 	}
 
 }

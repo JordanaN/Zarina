@@ -108,20 +108,7 @@ class PackagingService
 		return $this->repository->allPackagings();
 	}
 
-	/**
-	 * Método retorna array de name e id dos packagings
-	 * @return Array $dataPackagings
-	 */
-	public function findNameAndIdPackagings()
-	{
-		$packagings = $this->findAllPackagings();
-		$caterers = $this->catererService->bindPackagingAndCaterer($packagings);
-
-		dd($caterers);
-
-	}
-
-
+	
 	/**
 	 * Método atualiza dados das embalagens
 	 * @param Array $data 
@@ -150,8 +137,23 @@ class PackagingService
     		return true;
     	}
 
-    	return false;	
-  
+    	return false;  
+	}
+
+	/**
+	 * Metodo prepara array para a tela de packaging/edit
+	 */
+	public function getPackagingByProduct($product)
+	{
+		$response = $product->packagingProducts()->get();
+
+		$packaging = $response->map(function ($item, $key) {			
+		   	return $item->id;
+		});
+
+		$packaging = $packaging->toArray();
+
+		 return array_pop($packaging);
 	}
 }
 
