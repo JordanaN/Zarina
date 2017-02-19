@@ -49,5 +49,13 @@ class FreightRepository extends BaseRepository
         return $this->freight->find($id);
     }
 
+    /**
+     * método retorna todos os freste sem paginação
+     */
+    public function freightsAll()
+    {
+        return $this->freight->all();
+    }
+
 
 }

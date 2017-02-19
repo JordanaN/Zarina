@@ -81,4 +81,12 @@ class FreightService
 		}
 		return false;
 	}
+
+	/**
+	 * Método retorna todos os fretes
+	 */
+	public function getFreightsAll()
+	{
+		return $this->repository->freightsAll();
+	}
 }
